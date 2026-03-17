@@ -1,5 +1,7 @@
+@import "tailwindcss";
+
 .App {
     background-color: #0262de; /* blue */
     min-height: 100vh;         /* ensure it covers full viewport */
-    color: #ffffff;            /* readable text on blue */
+    color: #ffffff;       /* readable text on blue */
 }
