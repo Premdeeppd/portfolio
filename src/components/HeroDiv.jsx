@@ -6,7 +6,7 @@ function HeroDiv() {
       <h1 className="pt-8 text-center text-4xl font-bold leading-tight text-[#0262de] sm:text-6xl md:text-7xl lg:text-8xl">
         Hello, I'm Prem Deep
       </h1>
-      <h2 className="py-3 text-center text-xl font-semibold leading-snug text-[#0262de] sm:py-4 sm:text-2xl md:text-3xl lg:text-4xl">
+      <h2 className="pb-3 text-center text-xl font-semibold leading-snug text-[#0262de] sm:pb-4 sm:text-2xl md:text-3xl lg:text-4xl">
         Business Manager | Software Developer
       </h2>
       <img
