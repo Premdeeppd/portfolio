@@ -6,7 +6,9 @@ import emailImg from "../assets/images/email.png";
 function SocialDiv() {
   return (
     <div className="flex flex-col items-center bg-[#0262de] mx-3 py-8 sm:mx-4 md:py-10">
-      {/* <h2 className="text-4xl font-semibold text-[#ffe3d0]">Connect Me</h2> */}
+      <h2 className="pb-3 text-center text-xl font-semibold leading-snug text-[#ffe3d0] sm:pb-4 sm:text-2xl md:text-3xl lg:text-4xl">
+        Connect Me
+      </h2>
       <div className="my-8 flex flex-wrap justify-center gap-5 md:my-12 md:gap-8">
         <a
           href="https://www.linkedin.com/in/prem-deep/"

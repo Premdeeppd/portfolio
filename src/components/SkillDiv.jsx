@@ -21,7 +21,7 @@ const normalizeSvgMarkup = (svgMarkup) =>
     .replace(/fill="(?!none|currentColor)[^"]*"/gi, 'fill="currentColor"')
     .trim();
 
-const primarySkills = [
+const skills = [
   {
     name: "React",
     iconMarkup: normalizeSvgMarkup(rawReactLogo),
@@ -53,9 +53,6 @@ const primarySkills = [
     iconMarkup: normalizeSvgMarkup(rawTailwindLogo),
     iconClassName: "",
   },
-];
-
-const secondarySkills = [
   {
     name: "AWS",
     iconMarkup: normalizeSvgMarkup(rawAwsLogo),
@@ -101,28 +98,21 @@ function SkillDiv() {
     );
   };
 
-  const renderRow = (skills) => (
-    <div className="flex flex-wrap justify-center gap-5 md:gap-8">
-      {skills.map((skill) => (
-        <div
-          key={skill.name}
-          className="group flex flex-col items-center gap-3"
-          aria-label={skill.name}
-        >
-          {renderLogo(skill)}
-          {/* <span className="text-center text-sm font-medium text-[#0262de] sm:text-base">
-            {skill.name}
-          </span> */}
-        </div>
-      ))}
-    </div>
-  );
-
   return (
     <div className="mx-3 flex flex-col items-center bg-[#ffe3d0] py-8 sm:mx-4 md:py-10">
-      <div className="my-8 flex flex-col items-center gap-8 md:my-12 md:gap-10">
-        {renderRow(primarySkills)}
-        {renderRow(secondarySkills)}
+      <h2 className="pb-3 text-center text-xl font-semibold leading-snug text-[#0262de] sm:pb-4 sm:text-2xl md:text-3xl lg:text-4xl">
+        Tools I used
+      </h2>
+      <div className="my-8 grid grid-cols-4 gap-x-3 gap-y-5 md:my-12 md:grid-cols-6 md:gap-8">
+        {skills.map((skill) => (
+          <div
+            key={skill.name}
+            className="group flex justify-center"
+            aria-label={skill.name}
+          >
+            {renderLogo(skill)}
+          </div>
+        ))}
       </div>
     </div>
   );
