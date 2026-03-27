@@ -1,7 +1,7 @@
 function NavBar() {
   return (
-    <nav className="mx-4 bg-[#ffe3d0]">
-      <ul className="m-0 flex list-none items-center justify-end gap-6 px-4 py-3">
+    <nav className="mx-4 bg-[#ffe3d0] rounded-t-xl">
+      <ul className="m-0 flex list-none items-center justify-end gap-6 px-6 py-3">
         <li>
           <a
             href="#home"

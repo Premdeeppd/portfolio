@@ -99,7 +99,7 @@ function SkillDiv() {
   };
 
   return (
-    <div className="mx-3 flex flex-col items-center bg-[#ffe3d0] py-8 sm:mx-4 md:py-10">
+    <div className="mx-3 flex flex-col items-center bg-[#ffe3d0] py-8 sm:mx-4 md:py-10 rounded-t-xl">
       <h2 className="pb-3 text-center text-xl font-semibold leading-snug text-[#0262de] sm:pb-4 sm:text-2xl md:text-3xl lg:text-4xl">
         Tools I used
       </h2>
