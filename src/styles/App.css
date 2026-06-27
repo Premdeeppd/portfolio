@@ -1,7 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-blue: #0262de;
+  --color-brand-peach: #ffe3d0;
+  --font-sans: "Outfit", sans-serif;
+}
+
 .App {
-    background-color: #0262de; /* blue */
-    min-height: 100vh;         /* ensure it covers full viewport */
-    color: #ffffff;       /* readable text on blue */
+    background-color: var(--color-brand-blue);
+    min-height: 100vh;
+    color: #ffffff;
 }

@@ -1,0 +1,38 @@
+export const projects = [
+  {
+    id: 1,
+    title: "AI-Powered Coding Agent",
+    description: "An autonomous agentic workflow system built to automate repository-level coding tasks, leveraging LLMs and advanced tool-use planning.",
+    tags: ["React", "Node.js", "Gemini API", "TypeScript"],
+    githubUrl: "https://github.com/Premdeeppd",
+    liveUrl: "https://github.com/Premdeeppd",
+    layoutClassName: "h-[22rem] md:col-span-1 md:row-span-2 md:h-auto",
+  },
+  {
+    id: 2,
+    title: "Enterprise Analytics Dashboard",
+    description: "A real-time metrics platform visualizing sales, user engagement, and server performance data with custom charts and interactive controls.",
+    tags: ["React", "Tailwind CSS", "Recharts", "PostgreSQL"],
+    githubUrl: "https://github.com/Premdeeppd",
+    liveUrl: "https://github.com/Premdeeppd",
+    layoutClassName: "h-[14rem] md:col-span-2 md:row-span-1 md:h-auto",
+  },
+  {
+    id: 3,
+    title: "Distributed Cache Service",
+    description: "High-performance, low-latency key-value store optimized for hot-path caching using an LRU eviction policy.",
+    tags: ["Node.js", "Redis", "Docker", "AWS"],
+    githubUrl: "https://github.com/Premdeeppd",
+    liveUrl: "https://github.com/Premdeeppd",
+    layoutClassName: "h-[14rem] md:col-span-1 md:row-span-1 md:h-auto",
+  },
+  {
+    id: 4,
+    title: "SaaS Workflow Automator",
+    description: "Visual workflow builder mapping triggers to custom integrations, supporting conditional logic and multi-step tasks.",
+    tags: ["React", "Express", "MongoDB", "Redux"],
+    githubUrl: "https://github.com/Premdeeppd",
+    liveUrl: "https://github.com/Premdeeppd",
+    layoutClassName: "h-[14rem] md:col-span-1 md:row-span-1 md:h-auto",
+  },
+];
