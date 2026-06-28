@@ -1,0 +1,53 @@
+{
+  "notes": [
+    {
+      "title": "Express.js Notes",
+      "slug": "express-js-notes",
+      "description": "Personal knowledge reference note on Express.js Notes.",
+      "featured": false
+    },
+    {
+      "title": "Git and Github",
+      "slug": "git-and-github-notes",
+      "description": "Personal knowledge reference note on Git and Github.",
+      "featured": false
+    },
+    {
+      "title": "Javascript Notes",
+      "slug": "javascript-notes",
+      "description": "Personal knowledge reference note on Javascript Notes.",
+      "featured": false
+    },
+    {
+      "title": "Json Web Token (JWT) ",
+      "slug": "jwt-notes",
+      "description": "Personal knowledge reference note on Json Web Token (JWT) .",
+      "featured": false
+    },
+    {
+      "title": "MongoDB Notes",
+      "slug": "mongodb-notes",
+      "description": "Personal knowledge reference note on MongoDB Notes.",
+      "featured": false
+    },
+    {
+      "title": "Node.js Notes",
+      "slug": "node-js-notes",
+      "description": "Personal knowledge reference note on Node.js Notes.",
+      "featured": false
+    },
+    {
+      "title": "React.js Notes",
+      "slug": "react-js-notes",
+      "description": "Personal knowledge reference note on React.js Notes.",
+      "featured": false
+    },
+    {
+      "title": "Recoil",
+      "slug": "recoil-notes",
+      "description": "Personal knowledge reference note on Recoil.",
+      "featured": false
+    }
+  ],
+  "articles": []
+}

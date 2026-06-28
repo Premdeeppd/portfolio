@@ -5,7 +5,7 @@ import emailImg from "../assets/images/email.png";
 
 function SocialDiv() {
   return (
-    <div id="contact" className="flex flex-col items-center bg-brand-blue mx-3 py-8 sm:mx-4 md:py-10">
+    <div id="contact" className="scroll-mt-28 flex flex-col items-center bg-brand-blue mx-3 py-8 sm:mx-4 md:py-10">
       <h2 className="pb-3 text-center text-xl font-semibold leading-snug text-brand-peach sm:pb-4 sm:text-2xl md:text-3xl lg:text-4xl">
         Connect Me
       </h2>
