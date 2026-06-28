@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import contentIndex from "../../content/index.json";
 import MarkdownRenderer from "../components/MarkdownRenderer";
 import TableOfContents from "../components/TableOfContents";
+import DocumentOutline from "../components/DocumentOutline";
 import NotFound from "./NotFound";
 
 // Lazy load markdown modules in Vite
@@ -86,6 +87,7 @@ function NoteDetail() {
 
   return (
     <div className="mx-4 flex flex-col bg-brand-blue text-white min-h-screen">
+      <DocumentOutline content={content} />
       {/* Top Header Section */}
       <header className="bg-brand-peach text-brand-blue py-10 px-6 sm:px-10 rounded-b-2xl shadow-md mb-8">
         <div className="max-w-4xl mx-auto">
