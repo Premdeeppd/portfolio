@@ -126,12 +126,6 @@ function ArticleDetail() {
             <p className="mt-4 text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
               {currentArticleMeta.description}
             </p>
-
-            <div className="mt-6 flex flex-wrap gap-4 text-xs font-bold text-brand-blue/80">
-              <div>
-                READING TIME: <span className="text-brand-blue">{currentArticleMeta.readingTime}</span>
-              </div>
-            </div>
           </div>
         </header>
 

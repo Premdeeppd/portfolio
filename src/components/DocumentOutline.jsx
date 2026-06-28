@@ -65,7 +65,7 @@ function DocumentOutline({ content }) {
   if (headings.length === 0) return null;
 
   return (
-    <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-end space-y-3 p-3.5 bg-transparent transition-all duration-300 ease-in-out group max-w-[42px] hover:max-w-[280px] overflow-hidden">
+    <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-end space-y-3 p-3.5 bg-transparent transition-all duration-300 ease-in-out group max-w-[42px] hover:max-w-[280px] max-h-[70vh] overflow-y-auto no-scrollbar">
       {headings.map((heading) => {
         const isActive = activeId === heading.id;
         const dashWidth =
@@ -92,7 +92,7 @@ function DocumentOutline({ content }) {
           >
             {/* Title Text Label */}
             <span
-              className={`text-xs font-semibold whitespace-nowrap overflow-hidden transition-all duration-300 ease-out opacity-0 group-hover:opacity-100 max-w-0 group-hover:max-w-[200px] text-right ${
+              className={`text-xs font-semibold truncate transition-all duration-300 ease-out opacity-0 group-hover:opacity-100 max-w-0 group-hover:max-w-[200px] text-right ${
                 isActive
                   ? "text-brand-blue font-bold translate-x-0"
                   : "text-brand-blue/70 hover:text-brand-blue group-hover/item:-translate-x-1"

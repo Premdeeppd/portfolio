@@ -2,7 +2,6 @@
 title: "Here it is"
 slug: "here-it-is"
 description: "You can add this at the top:"
-readingTime: "3 min read"
 featured: false
 ---
 

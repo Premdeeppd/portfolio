@@ -258,16 +258,11 @@ async function syncType(type, parentId) {
         }
       }
 
-      // Compute reading time (roughly 200 words per minute)
-      const wordCount = markdownContent.split(/\s+/).filter(Boolean).length;
-      const readingTime = `${Math.ceil(wordCount / 200)} min read`;
-
       // Generate Front Matter
       const frontMatter = `---
 title: "${page.title.replace(/"/g, '\\"')}"
 slug: "${slug}"
 description: "${description.replace(/"/g, '\\"')}"
-readingTime: "${readingTime}"
 featured: ${featured}
 ---
 
@@ -284,7 +279,6 @@ featured: ${featured}
         title: page.title,
         slug,
         description,
-        readingTime,
         featured,
       });
 

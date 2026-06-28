@@ -2,7 +2,6 @@
 title: "Git and Github"
 slug: "this-is-git-slag"
 description: "Personal knowledge reference note on Git and Github."
-readingTime: "11 min read"
 featured: false
 ---
 

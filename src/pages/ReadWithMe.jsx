@@ -42,7 +42,7 @@ function ReadWithMe() {
                 <Link
                   key={note.slug}
                   to={`/notes/${note.slug}`}
-                  className="group block bg-brand-peach rounded-2xl p-6 hover:-translate-y-1.5 transition-all duration-300 shadow-md hover:shadow-[0_20px_40px_rgba(255,227,208,0.15)] flex flex-col justify-between min-h-[200px]"
+                  className="group block bg-brand-peach rounded-2xl p-6 hover:-translate-y-1.5 transition-all duration-300 shadow-md hover:shadow-[0_20px_40px_rgba(255,227,208,0.15)] min-h-[160px]"
                 >
                   <div>
                     <div className="flex items-start justify-between gap-3 mb-2">
@@ -55,14 +55,9 @@ function ReadWithMe() {
                         </span>
                       )}
                     </div>
-                    <p className="text-slate-700 text-sm leading-relaxed mb-4 line-clamp-4">
+                    <p className="text-slate-700 text-sm leading-relaxed line-clamp-4">
                       {note.description}
                     </p>
-                  </div>
-                  <div className="flex items-center justify-end text-xs text-slate-500 font-semibold border-t border-brand-blue/10 pt-3 mt-auto">
-                    <span className="bg-brand-blue/5 text-brand-blue px-2 py-0.5 rounded-md">
-                      {note.readingTime}
-                    </span>
                   </div>
                 </Link>
               ))}
@@ -93,28 +88,20 @@ function ReadWithMe() {
                   to={`/articles/${article.slug}`}
                   className="group block bg-brand-blue text-white rounded-2xl p-4 hover:translate-x-1.5 transition-all duration-300 shadow-md hover:shadow-[0_15px_30px_rgba(2,98,222,0.15)] border border-brand-peach/10"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-3">
-                        <h3 className="text-xl font-bold text-brand-peach group-hover:text-white transition-colors leading-tight">
-                          {article.title}
-                        </h3>
-                        {article.featured && (
-                          <span className="shrink-0 text-[10px] font-extrabold bg-brand-peach text-brand-blue px-2 py-0.5 rounded-full uppercase tracking-wider">
-                            Featured
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-white/80 text-sm leading-relaxed line-clamp-2">
-                        {article.description}
-                      </p>
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-xl font-bold text-brand-peach group-hover:text-white transition-colors leading-tight">
+                        {article.title}
+                      </h3>
+                      {article.featured && (
+                        <span className="shrink-0 text-[10px] font-extrabold bg-brand-peach text-brand-blue px-2 py-0.5 rounded-full uppercase tracking-wider">
+                          Featured
+                        </span>
+                      )}
                     </div>
-                    
-                    <div className="flex sm:flex-col sm:items-end justify-end items-center shrink-0 border-t sm:border-t-0 border-white/10 pt-3 sm:pt-0 text-xs text-brand-peach/80 font-semibold">
-                      <span className="bg-white/10 text-brand-peach px-2.5 py-0.5 rounded-md whitespace-nowrap">
-                        {article.readingTime}
-                      </span>
-                    </div>
+                    <p className="text-white/80 text-sm leading-relaxed line-clamp-2">
+                      {article.description}
+                    </p>
                   </div>
                 </Link>
               ))}
