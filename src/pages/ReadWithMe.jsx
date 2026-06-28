@@ -18,7 +18,7 @@ function ReadWithMe() {
   };
 
   return (
-    <div className="pb-16 space-y-8 pt-4">
+    <div className="pb-16 space-y-8">
       {/* Header Section */}
       <div className="mx-4 bg-brand-peach rounded-2xl text-brand-blue py-12 px-6 text-center">
         <div className="mx-auto max-w-4xl">
