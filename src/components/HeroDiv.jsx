@@ -2,7 +2,7 @@ import profileImg from "../assets/images/profile.png";
 
 function HeroDiv() {
   return (
-    <div id="home" className="scroll-mt-28 mx-4 flex flex-col items-center bg-brand-peach px-4 pt-20 pb-8 rounded-2xl sm:mx-4 sm:px-6 md:px-8">
+    <div id="home" className="scroll-mt-28 mx-0 sm:mx-4 flex flex-col items-center bg-brand-peach px-4 pt-20 pb-8 rounded-none sm:px-6 md:px-8">
       <h1 className="text-center text-4xl font-bold leading-tight text-brand-blue sm:text-6xl md:text-7xl lg:text-8xl">
         Hello, I'm Prem Deep
       </h1>
@@ -12,7 +12,7 @@ function HeroDiv() {
       <img
         src={profileImg}
         alt="Profile"
-        className="w-50 h-auto my-6 rotate-[-5deg] border-2 border-brand-blue rounded-lg shadow-lg sm:w-2xs"
+        className="w-50 h-auto my-6 rotate-[-5deg] border-2 border-brand-blue rounded-none shadow-lg sm:w-2xs"
       />
       <p className="max-w-4xl px-1 py-8 text-center text-base leading-relaxed text-brand-blue sm:px-2 sm:text-lg md:px-4 md:py-10 md:text-xl lg:text-2xl">
         Graduated from <b>IIT Roorkee</b>, I’m a <b>software developer</b>{" "}

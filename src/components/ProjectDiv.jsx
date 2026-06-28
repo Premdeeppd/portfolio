@@ -4,7 +4,7 @@ import { projects } from "../data/projects.js";
 function ProjectCard({ project }) {
   return (
     <article
-      className={`group relative overflow-hidden rounded-2xl border border-white/40 bg-brand-peach p-5 shadow-[0_20px_60px_rgba(2,98,222,0.12)] transition-transform duration-300 md:hover:-translate-y-1 ${project.layoutClassName}`}
+      className={`group relative overflow-hidden rounded-none border border-white/40 bg-brand-peach p-5 shadow-[0_20px_60px_rgba(2,98,222,0.12)] transition-transform duration-300 md:hover:-translate-y-1 ${project.layoutClassName}`}
     >
       {/* Front Content */}
       <div className="flex h-full flex-col justify-between transition-all duration-300 group-hover:blur-xs group-hover:opacity-10">
@@ -20,7 +20,7 @@ function ProjectCard({ project }) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-brand-blue px-2.5 py-0.5 text-xs font-semibold text-brand-peach"
+              className="rounded-none bg-brand-blue px-2.5 py-0.5 text-xs font-semibold text-brand-peach"
             >
               {tag}
             </span>
@@ -38,7 +38,7 @@ function ProjectCard({ project }) {
             aria-label={`View GitHub repository for ${project.title}`}
             className="group/btn flex flex-col items-center gap-1.5 text-brand-blue no-underline"
           >
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-blue p-2.5 transition-transform duration-300 hover:scale-110">
+            <span className="flex h-12 w-12 items-center justify-center rounded-none bg-brand-blue p-2.5 transition-transform duration-300 hover:scale-110">
               <img
                 src={githubIcon}
                 alt="GitHub"
@@ -55,7 +55,7 @@ function ProjectCard({ project }) {
               aria-label={`Visit live website for ${project.title}`}
               className="group/btn flex flex-col items-center gap-1.5 text-brand-blue no-underline"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-blue p-2.5 transition-transform duration-300 hover:scale-110">
+              <span className="flex h-12 w-12 items-center justify-center rounded-none bg-brand-blue p-2.5 transition-transform duration-300 hover:scale-110">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -82,7 +82,7 @@ function ProjectCard({ project }) {
 
 function ProjectDiv() {
   return (
-    <section id="projects" className="mx-3 mt-3 rounded-2xl bg-brand-blue px-4 py-8 sm:mx-4 sm:px-5 md:px-6 md:py-10">
+    <section id="projects" className="mx-0 mt-3 sm:mx-4 rounded-none bg-brand-blue px-4 py-8 sm:px-5 md:px-6 md:py-10">
       <div className="mx-auto max-w-4xl">
         <div className="flex justify-center">
           <h2 className="text-2xl font-semibold leading-snug text-brand-peach sm:text-3xl md:text-4xl">

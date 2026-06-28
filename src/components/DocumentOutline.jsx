@@ -103,7 +103,7 @@ function DocumentOutline({ content }) {
 
             {/* Dash Line representation */}
             <div
-              className={`h-1 rounded-full transition-all duration-300 shrink-0 ${dashWidth} ${
+              className={`h-1 rounded-none transition-all duration-300 shrink-0 ${dashWidth} ${
                 isActive
                   ? "bg-brand-blue h-1.5"
                   : "bg-brand-blue/30 group-hover:bg-brand-blue/45"

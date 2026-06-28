@@ -10,7 +10,7 @@ import NotFound from "./pages/NotFound.jsx";
 function App() {
   return (
     <Router>
-      <div className="App pt-4">
+      <div className="App pt-0 sm:pt-4">
         <NavBar />
         <main className="min-h-[calc(100vh-80px)] pb-12">
           <Routes>
