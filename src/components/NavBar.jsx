@@ -34,7 +34,7 @@ function NavBar() {
     location.pathname.startsWith("/articles");
 
   return (
-    <nav className="fixed top-8 z-50 left-1/2 -translate-x-1/2 md:left-auto md:right-8 md:translate-x-0 bg-brand-peach/95 backdrop-blur-md rounded-full max-w-[90vw] md:max-w-none">
+    <nav className="fixed top-8 z-50 left-1/2 -translate-x-1/2 md:left-auto md:right-8 md:translate-x-0 bg-brand-peach/95 backdrop-blur-md rounded-none max-w-[90vw] md:max-w-none">
       <ul className="m-0 flex list-none items-center justify-center gap-6 px-8 py-2.5 whitespace-nowrap">
         <li>
           <Link
@@ -51,12 +51,12 @@ function NavBar() {
         <li>
           <Link
             to="/read-with-me"
-            aria-label="Go to Read with Me"
+            aria-label="Go to Learn with Me"
             className={`font-bold text-brand-blue no-underline transition-colors hover:text-blue-700 tracking-wide ${
               isReadWithMeActive ? "underline decoration-brand-blue decoration-2 underline-offset-4" : ""
             }`}
           >
-            Read with Me
+            Learn with Me
           </Link>
         </li>
         <li>

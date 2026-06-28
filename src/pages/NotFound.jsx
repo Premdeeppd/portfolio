@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
-    <div className="mx-4 flex flex-col items-center justify-center text-center bg-brand-peach pt-30 pb-20 px-4 rounded-2xl shadow-md sm:mx-4">
+    <div className="mx-0 sm:mx-4 flex flex-col items-center justify-center text-center bg-brand-peach pt-30 pb-20 px-4 rounded-none shadow-md">
       <h1 className="text-7xl font-bold text-brand-blue mb-4">404</h1>
       <h2 className="text-2xl font-semibold text-brand-blue/90 mb-6">
         Oops! Page Not Found
@@ -14,13 +14,13 @@ function NotFound() {
       <div className="flex flex-wrap gap-4 justify-center">
         <Link
           to="/read-with-me"
-          className="rounded-full bg-brand-blue px-6 py-2.5 text-sm font-semibold text-brand-peach hover:bg-blue-700 transition-colors shadow-sm"
+          className="rounded-none bg-brand-blue px-6 py-2.5 text-sm font-semibold text-brand-peach hover:bg-blue-700 transition-colors shadow-sm"
         >
-          Go to Read with Me
+          Go to Learn with Me
         </Link>
         <Link
           to="/"
-          className="rounded-full border-2 border-brand-blue px-6 py-2 text-sm font-semibold text-brand-blue hover:bg-brand-blue/5 transition-colors"
+          className="rounded-none border-2 border-brand-blue px-6 py-2 text-sm font-semibold text-brand-blue hover:bg-brand-blue/5 transition-colors"
         >
           Go to Home
         </Link>

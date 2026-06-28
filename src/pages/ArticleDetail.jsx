@@ -69,9 +69,9 @@ function ArticleDetail() {
 
   if (loading) {
     return (
-      <div className="mx-4 flex items-center justify-center min-h-[400px] bg-brand-blue text-white rounded-b-2xl">
+      <div className="mx-0 sm:mx-4 flex items-center justify-center min-h-[400px] bg-brand-blue text-white rounded-none">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-brand-peach mx-auto mb-4"></div>
+          <div className="animate-spin rounded-none h-10 w-10 border-t-2 border-b-2 border-brand-peach mx-auto mb-4"></div>
           <p className="text-brand-peach font-semibold">Loading article...</p>
         </div>
       </div>
@@ -89,33 +89,23 @@ function ArticleDetail() {
       <DocumentOutline content={content} />
 
       {/* Unified Brand Peach Block */}
-      <div className="mx-4 mb-16 bg-brand-peach text-slate-800 rounded-2xl shadow-md flex-grow flex flex-col">
+      <div className="mx-0 sm:mx-4 mb-16 bg-brand-peach text-slate-800 rounded-none shadow-md flex-grow flex flex-col">
         {/* Top Header Section */}
         <header className="pt-30 pb-10 px-6 sm:px-10 text-brand-blue">
           <div className="max-w-4xl mx-auto">
             {/* Breadcrumbs */}
             <nav className="flex text-xs font-bold uppercase tracking-wider text-brand-blue/70 mb-4" aria-label="Breadcrumb">
-              <ol className="inline-flex items-center space-x-1 md:space-x-2">
+              <ol className="flex flex-wrap items-center gap-x-1 md:gap-x-2 gap-y-1.5 list-none p-0 m-0">
                 <li className="inline-flex items-center">
-                  <Link to="/" className="hover:text-blue-700">Home</Link>
+                  <Link to="/read-with-me" className="hover:text-blue-700 whitespace-nowrap">Learn with Me</Link>
                 </li>
-                <li>
-                  <div className="flex items-center">
-                    <span className="mx-1 text-brand-blue/40">/</span>
-                    <Link to="/read-with-me" className="hover:text-blue-700">Read with Me</Link>
-                  </div>
+                <li className="inline-flex items-center">
+                  <span className="mx-1 text-brand-blue/40">/</span>
+                  <span className="whitespace-nowrap">Articles</span>
                 </li>
-                <li>
-                  <div className="flex items-center">
-                    <span className="mx-1 text-brand-blue/40">/</span>
-                    <span className="text-brand-blue/40">Articles</span>
-                  </div>
-                </li>
-                <li aria-current="page">
-                  <div className="flex items-center">
-                    <span className="mx-1 text-brand-blue/40">/</span>
-                    <span className="truncate max-w-[150px] sm:max-w-xs">{currentArticleMeta.title}</span>
-                  </div>
+                <li aria-current="page" className="inline-flex items-center">
+                  <span className="mx-1 text-brand-blue/40">/</span>
+                  <span className="truncate max-w-[150px] sm:max-w-xs whitespace-nowrap">{currentArticleMeta.title}</span>
                 </li>
               </ol>
             </nav>
@@ -152,7 +142,7 @@ function ArticleDetail() {
             {prevArticle ? (
               <Link
                 to={`/articles/${prevArticle.slug}`}
-                className="group block bg-brand-blue/5 hover:bg-brand-blue/10 rounded-xl p-5 border border-brand-blue/10 transition-colors text-left"
+                className="group block bg-brand-blue/5 hover:bg-brand-blue/10 rounded-none p-5 border border-brand-blue/10 transition-colors text-left"
               >
                 <span className="text-xs font-bold text-brand-blue/60 uppercase tracking-wider block mb-1">
                   &larr; Previous Article
@@ -168,7 +158,7 @@ function ArticleDetail() {
             {nextArticle ? (
               <Link
                 to={`/articles/${nextArticle.slug}`}
-                className="group block bg-brand-blue/5 hover:bg-brand-blue/10 rounded-xl p-5 border border-brand-blue/10 transition-colors text-right"
+                className="group block bg-brand-blue/5 hover:bg-brand-blue/10 rounded-none p-5 border border-brand-blue/10 transition-colors text-right"
               >
                 <span className="text-xs font-bold text-brand-blue/60 uppercase tracking-wider block mb-1">
                   Next Article &rarr;

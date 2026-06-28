@@ -26,12 +26,12 @@ const CodeBlock = ({ lang, codeString }) => {
   }
 
   return (
-    <div className="relative my-6 rounded-xl overflow-hidden border border-white/20 shadow-md text-left">
+    <div className="relative my-6 rounded-none overflow-hidden border border-white/20 shadow-md text-left">
       <div className="flex items-center justify-between bg-slate-800 px-4 py-2 text-xs text-slate-400 font-mono">
         <span>{lang || "code"}</span>
         <button
           onClick={handleCopy}
-          className="rounded bg-slate-700 hover:bg-slate-600 px-2.5 py-1 text-white font-sans font-medium transition-colors cursor-pointer"
+          className="rounded-none bg-slate-700 hover:bg-slate-600 px-2.5 py-1 text-white font-sans font-medium transition-colors cursor-pointer"
         >
           {copied ? "Copied!" : "Copy"}
         </button>
@@ -99,15 +99,15 @@ const mdComponents = {
       const codeString = String(codeText).replace(/\n$/, "");
       return <CodeBlock lang={lang} codeString={codeString} />;
     }
-    return <pre className="bg-slate-950 p-4 overflow-x-auto rounded-xl">{children}</pre>;
+    return <pre className="bg-slate-950 p-4 overflow-x-auto rounded-none">{children}</pre>;
   },
   code: ({ children }) => (
-    <code className="bg-brand-blue/10 px-1.5 py-0.5 rounded font-mono text-sm text-brand-blue">
+    <code className="bg-brand-blue/10 px-1.5 py-0.5 rounded-none font-mono text-sm text-brand-blue break-words whitespace-pre-wrap">
       {children}
     </code>
   ),
   table: ({ children }) => (
-    <div className="my-6 overflow-x-auto rounded-xl border border-brand-blue/10 shadow-xs">
+    <div className="my-6 overflow-x-auto rounded-none border border-brand-blue/10 shadow-xs">
       <table className="w-full border-collapse text-left text-sm text-slate-800">
         {children}
       </table>
@@ -123,7 +123,7 @@ const mdComponents = {
   th: ({ children }) => <th className="px-4 py-3">{children}</th>,
   td: ({ children }) => <td className="px-4 py-3 text-slate-700">{children}</td>,
   blockquote: ({ children }) => (
-    <blockquote className="my-6 border-l-4 border-brand-blue/40 bg-brand-blue/5 pl-4 py-2 pr-2 italic text-slate-700 rounded-r-md">
+    <blockquote className="my-6 border-l-4 border-brand-blue/40 bg-brand-blue/5 pl-4 py-2 pr-2 italic text-slate-700 rounded-none">
       {children}
     </blockquote>
   ),
@@ -145,7 +145,7 @@ const mdComponents = {
     <img
       src={src}
       alt={alt}
-      className="my-6 max-w-full h-auto rounded-xl border border-white/20 shadow-md mx-auto"
+      className="my-6 max-w-full h-auto rounded-none border border-white/20 shadow-md mx-auto"
     />
   ),
   hr: () => <hr className="my-8 border-t border-brand-blue/10" />,
