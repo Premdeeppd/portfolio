@@ -3,8 +3,6 @@ title: "JavaScript Reference"
 slug: "javascript"
 description: "Essential JavaScript tips and quick reference notes for modern developers."
 readingTime: "2 min read"
-date: "2026-06-25"
-lastUpdated: "2026-06-27"
 featured: true
 ---
 

@@ -82,16 +82,7 @@ function ArticleDetail() {
     return <NotFound />;
   }
 
-  // Format date helper
-  const formatDate = (dateStr) => {
-    if (!dateStr) return "";
-    const date = new Date(dateStr);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-  };
+
 
   return (
     <div className="mx-4 flex flex-col bg-brand-blue text-white min-h-screen">
@@ -133,10 +124,6 @@ function ArticleDetail() {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-4 text-xs font-bold text-brand-blue/80 border-t border-brand-blue/15 pt-5">
-            <div>
-              PUBLISHED: <span className="text-brand-blue">{formatDate(currentArticleMeta.date)}</span>
-            </div>
-            <div className="hidden sm:block text-brand-blue/30">|</div>
             <div>
               READING TIME: <span className="text-brand-blue">{currentArticleMeta.readingTime}</span>
             </div>

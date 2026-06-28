@@ -6,16 +6,7 @@ function ReadWithMe() {
   const notes = contentIndex?.notes || [];
   const articles = contentIndex?.articles || [];
 
-  // Format date helper
-  const formatDate = (dateStr) => {
-    if (!dateStr) return "";
-    const date = new Date(dateStr);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-  };
+
 
   return (
     <div className="pb-16 space-y-8">
@@ -34,8 +25,8 @@ function ReadWithMe() {
       {/* Technical Notes Section (fuses with blue background, no border, no shadow) */}
       <section id="notes" className="mx-4 bg-brand-blue rounded-2xl p-6 sm:p-8 md:p-10">
         <div className="mx-auto max-w-4xl">
-          <div className="flex flex-col items-center border-b border-white/20 pb-3 mb-8">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-brand-peach text-center">
+          <div className="flex flex-col items-center pb-3 mb-8">
+            <h2 className="text-xl font-semibold leading-snug text-brand-peach sm:text-2xl md:text-3xl lg:text-4xl text-center">
               Technical Notes
             </h2>
             <span className="text-xs font-semibold bg-white/10 px-3 py-1 rounded-full text-brand-peach mt-2">
@@ -68,8 +59,7 @@ function ReadWithMe() {
                       {note.description}
                     </p>
                   </div>
-                  <div className="flex items-center justify-between text-xs text-slate-500 font-semibold border-t border-brand-blue/10 pt-3 mt-auto">
-                    <span>Updated {formatDate(note.lastUpdated)}</span>
+                  <div className="flex items-center justify-end text-xs text-slate-500 font-semibold border-t border-brand-blue/10 pt-3 mt-auto">
                     <span className="bg-brand-blue/5 text-brand-blue px-2 py-0.5 rounded-md">
                       {note.readingTime}
                     </span>
@@ -84,8 +74,8 @@ function ReadWithMe() {
       {/* Articles & Writings Section (no shadow) */}
       <section id="articles" className="mx-4 bg-brand-peach rounded-2xl p-6 sm:p-8 md:p-10">
         <div className="mx-auto max-w-4xl">
-          <div className="flex flex-col items-center border-b border-brand-blue/20 pb-3 mb-8">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl text-brand-blue text-center">
+          <div className="flex flex-col items-center pb-3 mb-8">
+            <h2 className="text-xl font-semibold leading-snug text-brand-blue sm:text-2xl md:text-3xl lg:text-4xl text-center">
               Articles & Writings
             </h2>
             <span className="text-xs font-semibold bg-brand-blue/10 px-3 py-1 rounded-full text-brand-blue mt-2">
@@ -101,7 +91,7 @@ function ReadWithMe() {
                 <Link
                   key={article.slug}
                   to={`/articles/${article.slug}`}
-                  className="group block bg-brand-blue text-white rounded-2xl p-6 hover:translate-x-1.5 transition-all duration-300 shadow-md hover:shadow-[0_15px_30px_rgba(2,98,222,0.15)] border border-brand-peach/10"
+                  className="group block bg-brand-blue text-white rounded-2xl p-4 hover:translate-x-1.5 transition-all duration-300 shadow-md hover:shadow-[0_15px_30px_rgba(2,98,222,0.15)] border border-brand-peach/10"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div className="space-y-1">
@@ -120,8 +110,7 @@ function ReadWithMe() {
                       </p>
                     </div>
                     
-                    <div className="flex sm:flex-col sm:items-end justify-between items-center shrink-0 border-t sm:border-t-0 border-white/10 pt-3 sm:pt-0 text-xs text-brand-peach/80 font-semibold gap-1.5">
-                      <time className="whitespace-nowrap">{formatDate(article.date)}</time>
+                    <div className="flex sm:flex-col sm:items-end justify-end items-center shrink-0 border-t sm:border-t-0 border-white/10 pt-3 sm:pt-0 text-xs text-brand-peach/80 font-semibold">
                       <span className="bg-white/10 text-brand-peach px-2.5 py-0.5 rounded-md whitespace-nowrap">
                         {article.readingTime}
                       </span>

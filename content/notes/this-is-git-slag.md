@@ -3,8 +3,6 @@ title: "Git and Github"
 slug: "this-is-git-slag"
 description: "Personal knowledge reference note on Git and Github."
 readingTime: "11 min read"
-date: "2023-12-05"
-lastUpdated: "2026-06-28"
 featured: false
 ---
 
@@ -283,24 +281,24 @@ featured: false
 
 - Syntax:
 
-```bash
-# Switch to the target branch
-git checkout target_branch
-
-# Merge changes from the source branch
-git merge source_branch
-
-# Switch to the branch to be rebased
-git checkout feature_branch
-
-# Rebase onto the target branch
-git rebase target_branch
-
-# Start an interactive rebase for the last N commits
-git rebase -i HEAD~N
-
-# In the interactive rebase, change "pick" to "squash" or "s" for the commits to be squashed
-```
+    ```bash
+    # Switch to the target branch
+    git checkout target_branch
+    
+    # Merge changes from the source branch
+    git merge source_branch
+    
+    # Switch to the branch to be rebased
+    git checkout feature_branch
+    
+    # Rebase onto the target branch
+    git rebase target_branch
+    
+    # Start an interactive rebase for the last N commits
+    git rebase -i HEAD~N
+    
+    # In the interactive rebase, change "pick" to "squash" or "s" for the commits to be squashed
+    ```
 
 
 ### Git fetch vs Git pull

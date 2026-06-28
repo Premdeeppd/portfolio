@@ -3,8 +3,6 @@ title: "How I Built My AI Startup"
 slug: "ai-startup"
 description: "A comprehensive walkthrough of the technical and business challenges of launching my AI product."
 readingTime: "4 min read"
-date: "2026-06-26"
-lastUpdated: "2026-06-26"
 featured: true
 ---
 

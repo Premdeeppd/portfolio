@@ -3,8 +3,6 @@ title: "Here it is"
 slug: "here-it-is"
 description: "You can add this at the top:"
 readingTime: "3 min read"
-date: "2026-03-19"
-lastUpdated: "2026-06-28"
 featured: false
 ---
 
@@ -13,6 +11,9 @@ featured: false
 
 
 # 🧠 MERN + PostgreSQL Full Stack Checklist
+
+
+# Has the dhanged Been made?
 
 
 ## 🎨 Frontend (React)

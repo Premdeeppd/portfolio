@@ -196,11 +196,9 @@ async function syncType(type, parentId) {
       
       const rawDescription = getProperty(page.properties, "description") || getProperty(page.properties, "Description");
       
-      const rawDate = getProperty(page.properties, "date") || getProperty(page.properties, "Date") || getProperty(page.properties, "publishDate");
-      const date = rawDate || page.created_time.split("T")[0];
+
       
-      const rawLastUpdated = getProperty(page.properties, "lastUpdated") || getProperty(page.properties, "LastUpdated") || getProperty(page.properties, "last_updated");
-      const lastUpdated = rawLastUpdated || page.last_edited_time.split("T")[0];
+
       
       const featured = getProperty(page.properties, "featured") || getProperty(page.properties, "Featured") || false;
 
@@ -270,8 +268,6 @@ title: "${page.title.replace(/"/g, '\\"')}"
 slug: "${slug}"
 description: "${description.replace(/"/g, '\\"')}"
 readingTime: "${readingTime}"
-date: "${date}"
-lastUpdated: "${lastUpdated}"
 featured: ${featured}
 ---
 
@@ -289,8 +285,6 @@ featured: ${featured}
         slug,
         description,
         readingTime,
-        date,
-        lastUpdated,
         featured,
       });
 
@@ -314,9 +308,9 @@ async function startSync() {
     const notes = await syncType("notes", notesParentId);
     const articles = await syncType("articles", articlesParentId);
 
-    // Sort by date descending (newest first)
-    notes.sort((a, b) => new Date(b.date) - new Date(a.date));
-    articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // Sort alphabetically by title
+    notes.sort((a, b) => a.title.localeCompare(b.title));
+    articles.sort((a, b) => a.title.localeCompare(b.title));
 
     // Save combined index
     const indexPath = path.join(projectRoot, "content", "index.json");

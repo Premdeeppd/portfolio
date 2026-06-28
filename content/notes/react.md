@@ -3,8 +3,6 @@ title: "React State Management"
 slug: "react"
 description: "A quick reference guide to hooks and state propagation in React 19."
 readingTime: "1 min read"
-date: "2026-06-24"
-lastUpdated: "2026-06-25"
 featured: false
 ---
 
