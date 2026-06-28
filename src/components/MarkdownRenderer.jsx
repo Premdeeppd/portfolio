@@ -31,8 +31,8 @@ const MermaidBlock = ({ chart }) => {
     if (!chart || !containerRef.current) return;
 
     const renderChart = async () => {
+      const id = `mermaid-chart-${Math.floor(Math.random() * 100000)}`;
       try {
-        const id = `mermaid-chart-${Math.floor(Math.random() * 100000)}`;
         if (containerRef.current) {
           containerRef.current.innerHTML = "";
         }
@@ -46,9 +46,9 @@ const MermaidBlock = ({ chart }) => {
         if (active) {
           setError(err.message || "Failed to render Mermaid diagram");
         }
-        // Cleanup global elements created by bad renders
-        const badElements = document.querySelectorAll(`[id^="mermaid-chart-"]`);
-        badElements.forEach(el => el.remove());
+        // Cleanup the temporary element created by this specific render attempt
+        const badElement = document.getElementById(`d${id}`);
+        if (badElement) badElement.remove();
       }
     };
 
@@ -163,7 +163,7 @@ const mdComponents = {
   pre: ({ children }) => {
     const childrenArray = React.Children.toArray(children);
     const codeElement = childrenArray.find(
-      (child) => child.props && (child.type === "code" || child.props.originalType === "code")
+      (child) => child.props && (child.props.className || child.props.children)
     );
     if (codeElement) {
       const className = codeElement.props.className || "";

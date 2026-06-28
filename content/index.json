@@ -49,5 +49,12 @@
       "featured": false
     }
   ],
-  "articles": []
+  "articles": [
+    {
+      "title": "How I Built a Lightning-Fast Headless CMS Using Notion, Node.js, and React",
+      "slug": "cms-using-notion-node-and-react",
+      "description": "I love Notion. It’s where I brainstorm, draft technical articles, and sketch out reference notes. But when I wanted to display these notes on my personal portfo",
+      "featured": false
+    }
+  ]
 }
