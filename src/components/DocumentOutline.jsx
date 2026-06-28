@@ -31,29 +31,34 @@ function DocumentOutline({ content }) {
   useEffect(() => {
     if (headings.length === 0) return;
 
-    const handleObserver = (entries) => {
-      const visibleEntries = entries.filter((entry) => entry.isIntersecting);
-      if (visibleEntries.length > 0) {
-        // Find the first visible heading in viewport
-        setActiveId(visibleEntries[0].target.id);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 120; // 120px offset from top
+      
+      let currentActiveId = "";
+      for (let i = 0; i < headings.length; i++) {
+        const element = document.getElementById(headings[i].id);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          if (scrollPosition >= offsetTop) {
+            currentActiveId = headings[i].id;
+          } else {
+            break;
+          }
+        }
+      }
+      
+      if (currentActiveId) {
+        setActiveId(currentActiveId);
+      } else if (headings.length > 0) {
+        setActiveId(headings[0].id);
       }
     };
 
-    const observer = new IntersectionObserver(handleObserver, {
-      rootMargin: "0px 0px -40% 0px",
-      threshold: 0.1,
-    });
-
-    headings.forEach((heading) => {
-      const element = document.getElementById(heading.id);
-      if (element) observer.observe(element);
-    });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Set initial state
 
     return () => {
-      headings.forEach((heading) => {
-        const element = document.getElementById(heading.id);
-        if (element) observer.unobserve(element);
-      });
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [headings]);
 

@@ -85,10 +85,10 @@ function NoteDetail() {
 
 
   return (
-    <div className="mx-4 flex flex-col bg-brand-blue text-white min-h-screen">
+    <div className="flex flex-col bg-brand-blue text-white min-h-screen">
       <DocumentOutline content={content} />
       {/* Top Header Section */}
-      <header className="bg-brand-peach text-brand-blue py-10 px-6 sm:px-10 rounded-b-2xl shadow-md mb-8">
+      <header className="mx-4 bg-brand-peach text-brand-blue py-10 px-6 sm:px-10 rounded-2xl shadow-md mb-8">
         <div className="max-w-4xl mx-auto">
           {/* Breadcrumbs */}
           <nav className="flex text-xs font-bold uppercase tracking-wider text-brand-blue/70 mb-4" aria-label="Breadcrumb">
@@ -133,7 +133,7 @@ function NoteDetail() {
       </header>
 
       {/* Main Content Layout */}
-      <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 flex-grow">
+      <div className="mx-4 flex-grow">
         <div className="max-w-4xl mx-auto">
           {/* Markdown Article Body */}
           <article className="bg-brand-peach text-slate-800 rounded-2xl p-6 sm:p-8 md:p-10 shadow-md">
@@ -143,8 +143,8 @@ function NoteDetail() {
       </div>
 
       {/* Bottom Section: Previous/Next Navigation */}
-      <footer className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-10 mb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-white/20 pt-8">
+      <footer className="mx-4 mt-10 mb-16">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-white/20 pt-8">
           {prevNote ? (
             <Link
               to={`/notes/${prevNote.slug}`}
