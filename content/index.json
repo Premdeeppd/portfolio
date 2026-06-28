@@ -49,12 +49,5 @@
       "featured": false
     }
   ],
-  "articles": [
-    {
-      "title": "Here it is",
-      "slug": "here-it-is",
-      "description": "You can add this at the top:",
-      "featured": false
-    }
-  ]
+  "articles": []
 }
