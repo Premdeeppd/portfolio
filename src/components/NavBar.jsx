@@ -42,7 +42,7 @@ function NavBar() {
             onClick={(e) => handleLinkClick(e, "home")}
             aria-label="Go to Home"
             className={`font-bold text-brand-blue no-underline transition-colors hover:text-blue-700 tracking-wide ${
-              location.pathname === "/" && !location.hash ? "underline decoration-2 underline-offset-4" : ""
+              location.pathname === "/" && !location.hash ? "underline decoration-brand-blue decoration-2 underline-offset-4" : ""
             }`}
           >
             Home
@@ -53,7 +53,7 @@ function NavBar() {
             to="/read-with-me"
             aria-label="Go to Read with Me"
             className={`font-bold text-brand-blue no-underline transition-colors hover:text-blue-700 tracking-wide ${
-              isReadWithMeActive ? "underline decoration-2 underline-offset-4" : ""
+              isReadWithMeActive ? "underline decoration-brand-blue decoration-2 underline-offset-4" : ""
             }`}
           >
             Read with Me
@@ -65,7 +65,7 @@ function NavBar() {
             onClick={(e) => handleLinkClick(e, "contact")}
             aria-label="Go to Contact"
             className={`font-bold text-brand-blue no-underline transition-colors hover:text-blue-700 tracking-wide ${
-              location.hash === "#contact" ? "underline decoration-2 underline-offset-4" : ""
+              location.hash === "#contact" ? "underline decoration-brand-blue decoration-2 underline-offset-4" : ""
             }`}
           >
             Contact

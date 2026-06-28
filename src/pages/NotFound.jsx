@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
-    <div className="mx-4 flex flex-col items-center justify-center text-center bg-brand-peach py-20 px-4 rounded-b-2xl shadow-md sm:mx-4">
+    <div className="mx-4 flex flex-col items-center justify-center text-center bg-brand-peach pt-30 pb-20 px-4 rounded-2xl shadow-md sm:mx-4">
       <h1 className="text-7xl font-bold text-brand-blue mb-4">404</h1>
       <h2 className="text-2xl font-semibold text-brand-blue/90 mb-6">
         Oops! Page Not Found

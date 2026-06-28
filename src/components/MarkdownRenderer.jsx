@@ -69,7 +69,7 @@ const renderHeading = (level, children) => {
   const Tag = `h${level}`;
   
   // Custom styles per heading level
-  let className = "group relative font-semibold text-brand-blue scroll-mt-20 ";
+  let className = "group relative font-semibold text-brand-blue scroll-mt-28 ";
   if (level === 1) className += "text-3xl mt-8 mb-4 border-b border-brand-blue/10 pb-2";
   else if (level === 2) className += "text-2xl mt-8 mb-4";
   else if (level === 3) className += "text-xl mt-6 mb-3";

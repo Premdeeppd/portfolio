@@ -3,7 +3,9 @@
 @theme {
   --color-brand-blue: #0262de;
   --color-brand-peach: #ffe3d0;
+  --color-brand-accent: #0262de;
   --font-sans: "Outfit", sans-serif;
+  --spacing-30: 7.5rem;
 }
 
 html {

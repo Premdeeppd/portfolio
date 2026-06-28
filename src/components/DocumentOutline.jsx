@@ -65,7 +65,7 @@ function DocumentOutline({ content }) {
   if (headings.length === 0) return null;
 
   return (
-    <div className="fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-end space-y-3 p-3.5 rounded-2xl bg-transparent hover:bg-brand-peach/95 hover:backdrop-blur-md border border-transparent hover:border-brand-blue/10 hover:shadow-xl transition-all duration-300 ease-in-out group max-w-[42px] hover:max-w-[280px] overflow-hidden">
+    <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-end space-y-3 p-3.5 bg-transparent transition-all duration-300 ease-in-out group max-w-[42px] hover:max-w-[280px] overflow-hidden">
       {headings.map((heading) => {
         const isActive = activeId === heading.id;
         const dashWidth =
@@ -105,8 +105,8 @@ function DocumentOutline({ content }) {
             <div
               className={`h-1 rounded-full transition-all duration-300 shrink-0 ${dashWidth} ${
                 isActive
-                  ? "bg-brand-peach group-hover:bg-brand-blue h-1.5 shadow-[0_0_8px_rgba(255,227,208,0.6)] group-hover:shadow-none"
-                  : "bg-white/40 group-hover:bg-brand-blue/30"
+                  ? "bg-brand-blue h-1.5"
+                  : "bg-brand-blue/30 group-hover:bg-brand-blue/45"
               }`}
             />
           </a>
