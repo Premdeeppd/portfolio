@@ -1,24 +1,75 @@
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
 function NavBar() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Scroll to hash element if exists in URL (e.g. after navigating back to home)
+    if (location.hash) {
+      const id = location.hash.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        // Delay slightly to allow the home component to render and mount
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  const handleLinkClick = (e, targetId) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  const isReadWithMeActive =
+    location.pathname.startsWith("/read-with-me") ||
+    location.pathname.startsWith("/notes") ||
+    location.pathname.startsWith("/articles");
+
   return (
     <nav className="mx-4 bg-brand-peach rounded-t-2xl">
       <ul className="m-0 flex list-none items-center justify-end gap-6 px-6 py-3">
         <li>
-          <a
-            href="#home"
+          <Link
+            to="/#home"
+            onClick={(e) => handleLinkClick(e, "home")}
             aria-label="Go to Home"
-            className="font-semibold text-brand-blue no-underline visited:text-brand-blue hover:text-blue-700"
+            className={`font-semibold text-brand-blue no-underline hover:text-blue-700 ${
+              location.pathname === "/" && !location.hash ? "underline decoration-2 underline-offset-4" : ""
+            }`}
           >
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#contact"
+          <Link
+            to="/read-with-me"
+            aria-label="Go to Read with Me"
+            className={`font-semibold text-brand-blue no-underline hover:text-blue-700 ${
+              isReadWithMeActive ? "underline decoration-2 underline-offset-4" : ""
+            }`}
+          >
+            Read with Me
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/#contact"
+            onClick={(e) => handleLinkClick(e, "contact")}
             aria-label="Go to Contact"
-            className="font-semibold text-brand-blue no-underline visited:text-brand-blue hover:text-blue-700"
+            className={`font-semibold text-brand-blue no-underline hover:text-blue-700 ${
+              location.hash === "#contact" ? "underline decoration-2 underline-offset-4" : ""
+            }`}
           >
             Contact
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

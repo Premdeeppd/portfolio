@@ -1,0 +1,24 @@
+{
+  "notes": [
+    {
+      "title": "Git and Github",
+      "slug": "this-is-git-slag",
+      "description": "Personal knowledge reference note on Git and Github.",
+      "readingTime": "11 min read",
+      "date": "2023-12-05",
+      "lastUpdated": "2026-06-28",
+      "featured": false
+    }
+  ],
+  "articles": [
+    {
+      "title": "Here it is",
+      "slug": "here-it-is",
+      "description": "You can add this at the top:",
+      "readingTime": "3 min read",
+      "date": "2026-03-19",
+      "lastUpdated": "2026-06-28",
+      "featured": false
+    }
+  ]
+}

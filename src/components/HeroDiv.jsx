@@ -2,7 +2,7 @@ import profileImg from "../assets/images/profile.png";
 
 function HeroDiv() {
   return (
-    <div className="mx-4 flex flex-col items-center bg-brand-peach px-4 rounded-b-2xl sm:mx-4 sm:px-6 md:px-8">
+    <div id="home" className="mx-4 flex flex-col items-center bg-brand-peach px-4 rounded-b-2xl sm:mx-4 sm:px-6 md:px-8">
       <h1 className="pt-8 text-center text-4xl font-bold leading-tight text-brand-blue sm:text-6xl md:text-7xl lg:text-8xl">
         Hello, I'm Prem Deep
       </h1>
