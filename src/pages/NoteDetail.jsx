@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import contentIndex from "../../content/index.json";
 import MarkdownRenderer from "../components/MarkdownRenderer";
-import TableOfContents from "../components/TableOfContents";
 import DocumentOutline from "../components/DocumentOutline";
 import NotFound from "./NotFound";
 
@@ -135,13 +134,8 @@ function NoteDetail() {
 
       {/* Main Content Layout */}
       <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 flex-grow">
-        <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-10">
-          {/* Left Column: Sticky Table of Contents */}
-          <aside className="hidden lg:block">
-            <TableOfContents content={content} />
-          </aside>
-
-          {/* Right Column: Markdown Article Body */}
+        <div className="max-w-4xl mx-auto">
+          {/* Markdown Article Body */}
           <article className="bg-brand-peach text-slate-800 rounded-2xl p-6 sm:p-8 md:p-10 shadow-md">
             <MarkdownRenderer content={content} />
           </article>
