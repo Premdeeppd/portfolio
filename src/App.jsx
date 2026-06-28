@@ -4,7 +4,7 @@ import Home from "./pages/Home.jsx";
 
 function App() {
   return (
-    <div className="App pt-4">
+    <div className="App pt-20">
       <NavBar />
       <Home />
     </div>
