@@ -5,19 +5,8 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
 
 // Custom code block renderer with syntax highlighting and copy button
-const CodeBlock = ({ inline, className, children }) => {
+const CodeBlock = ({ lang, codeString }) => {
   const [copied, setCopied] = useState(false);
-  const match = /language-(\w+)/.exec(className || "");
-  const lang = match ? match[1] : "";
-  const codeString = String(children).replace(/\n$/, "");
-
-  if (inline) {
-    return (
-      <code className="bg-brand-blue/10 px-1.5 py-0.5 rounded font-mono text-sm text-brand-blue">
-        {children}
-      </code>
-    );
-  }
 
   const handleCopy = () => {
     navigator.clipboard.writeText(codeString);
@@ -37,7 +26,7 @@ const CodeBlock = ({ inline, className, children }) => {
   }
 
   return (
-    <div className="relative my-6 rounded-xl overflow-hidden border border-white/20 shadow-md">
+    <div className="relative my-6 rounded-xl overflow-hidden border border-white/20 shadow-md text-left">
       <div className="flex items-center justify-between bg-slate-800 px-4 py-2 text-xs text-slate-400 font-mono">
         <span>{lang || "code"}</span>
         <button
@@ -47,7 +36,7 @@ const CodeBlock = ({ inline, className, children }) => {
           {copied ? "Copied!" : "Copy"}
         </button>
       </div>
-      <pre className="bg-slate-950 p-4 overflow-x-auto text-sm font-mono text-slate-100">
+      <pre className="bg-slate-950 p-4 overflow-x-auto text-sm font-mono text-slate-100 m-0">
         <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
       </pre>
     </div>
@@ -97,7 +86,26 @@ const mdComponents = {
   h4: ({ children }) => renderHeading(4, children),
   h5: ({ children }) => renderHeading(5, children),
   h6: ({ children }) => renderHeading(6, children),
-  code: CodeBlock,
+  pre: ({ children }) => {
+    const childrenArray = React.Children.toArray(children);
+    const codeElement = childrenArray.find(
+      (child) => child.props && (child.type === "code" || child.props.originalType === "code")
+    );
+    if (codeElement) {
+      const className = codeElement.props.className || "";
+      const codeText = codeElement.props.children || "";
+      const match = /language-(\w+)/.exec(className);
+      const lang = match ? match[1] : "";
+      const codeString = String(codeText).replace(/\n$/, "");
+      return <CodeBlock lang={lang} codeString={codeString} />;
+    }
+    return <pre className="bg-slate-950 p-4 overflow-x-auto rounded-xl">{children}</pre>;
+  },
+  code: ({ children }) => (
+    <code className="bg-brand-blue/10 px-1.5 py-0.5 rounded font-mono text-sm text-brand-blue">
+      {children}
+    </code>
+  ),
   table: ({ children }) => (
     <div className="my-6 overflow-x-auto rounded-xl border border-brand-blue/10 shadow-xs">
       <table className="w-full border-collapse text-left text-sm text-slate-800">
