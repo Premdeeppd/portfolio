@@ -7,7 +7,7 @@ function HeroDiv() {
         Hello, I'm Prem Deep
       </h1>
       <h2 className="pb-3 text-center text-xl font-semibold leading-snug text-brand-blue sm:pb-4 sm:text-2xl md:text-3xl lg:text-4xl">
-        ROXC . Turing . IIT Roorkee
+        ROXC | Turing | IIT Roorkee
       </h2>
       <img
         src={profileImg}
