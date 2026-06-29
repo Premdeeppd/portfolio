@@ -1,8 +1,8 @@
 ---
 title: "How I Built a Lightning-Fast Headless CMS Using Notion, Node.js, and React"
 slug: "cms-using-notion-node-and-react"
-description: "I love Notion. It’s where I brainstorm, draft technical articles, and sketch out reference notes. But when I wanted to display these notes on my personal portfo"
-featured: false
+description: "Why pay for a headless CMS when you can write in Notion and compile directly to local static assets?"
+featured: true
 ---
 
 
@@ -194,4 +194,10 @@ useEffect(() => {
 This approach yields the best of both worlds:
 1. The initial page load is incredibly tiny because notes are not bundled into the main JS package.
 2. The user experience is smooth because files load nearly instantly as lightweight `.md` text assets.
+
+
+## **See the Code in Action**
+
+
+Want to see the full source code for this integration? Check out the repository on GitHub: [https://github.com/Premdeeppd/portfolio](https://github.com/Premdeeppd/portfolio)
 
