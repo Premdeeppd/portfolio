@@ -119,7 +119,7 @@ function ArticleDetail() {
             </p>
 
             {/* Author Profile */}
-            <div className="mt-6 flex items-center gap-4 border-t border-brand-blue/15 pt-6">
+            <div className="mt-6 flex items-center gap-4">
               <img
                 src={authorImg}
                 alt="Prem Deep"
