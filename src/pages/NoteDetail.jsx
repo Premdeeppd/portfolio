@@ -4,6 +4,7 @@ import contentIndex from "../../content/index.json";
 import MarkdownRenderer from "../components/MarkdownRenderer";
 import DocumentOutline from "../components/DocumentOutline";
 import NotFound from "./NotFound";
+import authorImg from "../assets/images/image.png";
 
 // Lazy load markdown modules in Vite
 const noteModules = import.meta.glob("/content/notes/*.md", { query: "?raw", import: "default" });
@@ -116,6 +117,19 @@ function NoteDetail() {
             <p className="mt-4 text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
               {currentNoteMeta.description}
             </p>
+
+            {/* Author Profile */}
+            <div className="mt-6 flex items-center gap-4">
+              <img
+                src={authorImg}
+                alt="Prem Deep"
+                className="w-12 h-12 object-cover border border-brand-blue"
+              />
+              <div className="flex flex-col">
+                <span className="text-sm font-extrabold text-brand-blue">Prem Deep</span>
+                <span className="text-xs font-semibold text-slate-600">ROXC | Turing | IIT Roorkee</span>
+              </div>
+            </div>
           </div>
         </header>
 

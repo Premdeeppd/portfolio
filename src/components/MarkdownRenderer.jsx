@@ -1,8 +1,82 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
+import mermaid from "mermaid";
+
+// Initialize mermaid with clean matching styles
+mermaid.initialize({
+  startOnLoad: false,
+  theme: "neutral",
+  securityLevel: "loose",
+  fontFamily: "Outfit, sans-serif",
+  themeVariables: {
+    fontFamily: "Outfit, sans-serif",
+    primaryColor: "#ffe3d0",      // brand peach
+    primaryTextColor: "#0262de",  // brand blue
+    lineColor: "#0262de",
+    nodeBorder: "#0262de",
+  }
+});
+
+// Render Mermaid charts safely with a ref
+const MermaidBlock = ({ chart }) => {
+  const containerRef = useRef(null);
+  const [svgContent, setSvgContent] = useState("");
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let active = true;
+    if (!chart || !containerRef.current) return;
+
+    const renderChart = async () => {
+      const id = `mermaid-chart-${Math.floor(Math.random() * 100000)}`;
+      try {
+        if (containerRef.current) {
+          containerRef.current.innerHTML = "";
+        }
+        const { svg } = await mermaid.render(id, chart);
+        if (active) {
+          setSvgContent(svg);
+          setError(null);
+        }
+      } catch (err) {
+        console.error("Mermaid parsing error:", err);
+        if (active) {
+          setError(err.message || "Failed to render Mermaid diagram");
+        }
+        // Cleanup the temporary element created by this specific render attempt
+        const badElement = document.getElementById(`d${id}`);
+        if (badElement) badElement.remove();
+      }
+    };
+
+    renderChart();
+
+    return () => {
+      active = false;
+    };
+  }, [chart]);
+
+  if (error) {
+    return (
+      <div className="my-6 p-4 border border-red-500/20 bg-red-50/10 text-red-500 text-xs font-mono whitespace-pre-wrap rounded-none text-left">
+        <div className="font-bold mb-2">Mermaid Rendering Error:</div>
+        {error}
+        <pre className="mt-4 p-3 bg-slate-900 text-slate-300 overflow-x-auto">{chart}</pre>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      ref={containerRef}
+      className="my-6 p-6 bg-white/40 border border-brand-blue/10 flex justify-center items-center overflow-x-auto rounded-none shadow-xs text-center"
+      dangerouslySetInnerHTML={svgContent ? { __html: svgContent } : undefined}
+    />
+  );
+};
 
 // Custom code block renderer with syntax highlighting and copy button
 const CodeBlock = ({ lang, codeString }) => {
@@ -89,7 +163,7 @@ const mdComponents = {
   pre: ({ children }) => {
     const childrenArray = React.Children.toArray(children);
     const codeElement = childrenArray.find(
-      (child) => child.props && (child.type === "code" || child.props.originalType === "code")
+      (child) => child.props && (child.props.className || child.props.children)
     );
     if (codeElement) {
       const className = codeElement.props.className || "";
@@ -97,6 +171,11 @@ const mdComponents = {
       const match = /language-(\w+)/.exec(className);
       const lang = match ? match[1] : "";
       const codeString = String(codeText).replace(/\n$/, "");
+      
+      if (lang === "mermaid") {
+        return <MermaidBlock chart={codeString} />;
+      }
+      
       return <CodeBlock lang={lang} codeString={codeString} />;
     }
     return <pre className="bg-slate-950 p-4 overflow-x-auto rounded-none">{children}</pre>;
