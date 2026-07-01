@@ -37,6 +37,12 @@
       "featured": false
     },
     {
+      "title": "PostgreSQL",
+      "slug": "postgresql",
+      "description": "Integrating PostgreSQL with Node.js to build reliable, performant applications using relational data, transactions, and efficient queries.",
+      "featured": false
+    },
+    {
       "title": "React.js",
       "slug": "react-js",
       "description": "Creating modern, component-driven user interfaces with React fundamentals and advanced patterns.",
@@ -46,6 +52,12 @@
       "title": "Recoil",
       "slug": "recoil",
       "description": "Managing global state in React with atoms, selectors, and predictable state updates.",
+      "featured": false
+    },
+    {
+      "title": "SQL",
+      "slug": "sql",
+      "description": "Mastering relational databases through efficient queries, schema design, joins, indexing, and optimization.",
       "featured": false
     },
     {
