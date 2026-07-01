@@ -1,51 +1,57 @@
 {
   "notes": [
     {
-      "title": "Express.js Notes",
-      "slug": "express-js-notes",
-      "description": "Personal knowledge reference note on Express.js Notes.",
+      "title": "Express.js",
+      "slug": "express-js",
+      "description": "Building secure, scalable REST APIs with middleware, routing, and backend best practices.",
       "featured": false
     },
     {
       "title": "Git and Github",
-      "slug": "git-and-github-notes",
-      "description": "Personal knowledge reference note on Git and Github.",
+      "slug": "git-and-github",
+      "description": "Version control fundamentals, branching strategies, collaboration workflows, and best practices.",
       "featured": false
     },
     {
-      "title": "Javascript Notes",
-      "slug": "javascript-notes",
-      "description": "Personal knowledge reference note on Javascript Notes.",
+      "title": "Javascript",
+      "slug": "javascript",
+      "description": "Deep dives into core concepts, asynchronous programming, and how JavaScript works under the hood.",
       "featured": false
     },
     {
       "title": "Json Web Token (JWT) ",
-      "slug": "jwt-notes",
-      "description": "Personal knowledge reference note on Json Web Token (JWT) .",
+      "slug": "jwt",
+      "description": "Understanding authentication, authorization, token-based security, and session management.",
       "featured": false
     },
     {
-      "title": "MongoDB Notes",
-      "slug": "mongodb-notes",
-      "description": "Personal knowledge reference note on MongoDB Notes.",
+      "title": "MongoDB",
+      "slug": "mongodb",
+      "description": "Schema design, indexing, queries, aggregation, and performance optimization in MongoDB.",
       "featured": false
     },
     {
-      "title": "Node.js Notes",
-      "slug": "node-js-notes",
-      "description": "Personal knowledge reference note on Node.js Notes.",
+      "title": "Node.js",
+      "slug": "node-js",
+      "description": "Exploring server-side JavaScript, event-driven architecture, streams, and backend development.",
       "featured": false
     },
     {
-      "title": "React.js Notes",
-      "slug": "react-js-notes",
-      "description": "Personal knowledge reference note on React.js Notes.",
+      "title": "React.js",
+      "slug": "react-js",
+      "description": "Creating modern, component-driven user interfaces with React fundamentals and advanced patterns.",
       "featured": false
     },
     {
       "title": "Recoil",
-      "slug": "recoil-notes",
-      "description": "Personal knowledge reference note on Recoil.",
+      "slug": "recoil",
+      "description": "Managing global state in React with atoms, selectors, and predictable state updates.",
+      "featured": false
+    },
+    {
+      "title": "Typescript",
+      "slug": "typescript",
+      "description": "Building safer, scalable JavaScript applications with static typing and modern language features.",
       "featured": false
     }
   ],
