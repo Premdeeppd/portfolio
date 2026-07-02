@@ -43,6 +43,12 @@
       "featured": false
     },
     {
+      "title": "Prisma (ORM)",
+      "slug": "prisma-orm",
+      "description": "Simplifying database access in Node.js with type-safe queries, schema modeling, migrations, and an intuitive developer experience.",
+      "featured": false
+    },
+    {
       "title": "React.js",
       "slug": "react-js",
       "description": "Creating modern, component-driven user interfaces with React fundamentals and advanced patterns.",
