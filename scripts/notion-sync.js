@@ -24,6 +24,21 @@ if (!token) {
 const notion = token ? new Client({ auth: token }) : null;
 const n2m = notion ? new NotionToMarkdown({ notionClient: notion }) : null;
 
+// Parse command line arguments for --force or --clean
+const args = process.argv.slice(2);
+const forceSync = args.includes("--force") || args.includes("--clean");
+
+const cachePath = path.join(projectRoot, "content", ".sync-cache.json");
+
+let syncCache = {};
+if (fs.existsSync(cachePath) && !forceSync) {
+  try {
+    syncCache = JSON.parse(fs.readFileSync(cachePath, "utf-8"));
+  } catch (err) {
+    console.warn("Warning: Failed to parse sync cache, starting fresh.", err.message);
+  }
+}
+
 // Helper to slugify titles
 function slugify(text) {
   return text
@@ -185,21 +200,94 @@ async function syncType(type, parentId) {
   console.log(`Found ${pages.length} pages/items in ${type}.`);
 
   const metadataList = [];
+  const currentSyncPageIds = new Set(pages.map(p => p.id));
+
+  // Clean up files for deleted pages of this type
+  for (const pageId of Object.keys(syncCache)) {
+    const cachedPage = syncCache[pageId];
+    if (cachedPage.type === type && !currentSyncPageIds.has(pageId)) {
+      console.log(`Page "${cachedPage.title}" (${pageId}) is no longer in Notion. Cleaning up local files...`);
+      const oldFilePath = path.join(outputDir, `${cachedPage.slug}.md`);
+      if (fs.existsSync(oldFilePath)) {
+        try {
+          fs.unlinkSync(oldFilePath);
+          console.log(`Deleted local file: ${oldFilePath}`);
+        } catch (err) {
+          console.error(`Failed to delete local file ${oldFilePath}:`, err.message);
+        }
+      }
+      if (cachedPage.images && Array.isArray(cachedPage.images)) {
+        for (const imgUrl of cachedPage.images) {
+          const cleanRelativePath = imgUrl.replace(/^\/content-images\//, "");
+          const fullImgPath = path.join(projectRoot, "public", "content-images", cleanRelativePath);
+          if (fs.existsSync(fullImgPath)) {
+            try {
+              fs.unlinkSync(fullImgPath);
+              console.log(`Deleted image: ${fullImgPath}`);
+            } catch (err) {
+              console.error(`Failed to delete image ${fullImgPath}:`, err.message);
+            }
+          }
+        }
+      }
+      delete syncCache[pageId];
+    }
+  }
 
   for (const page of pages) {
     try {
-      console.log(`Processing ${type}: "${page.title}" (${page.id})...`);
-      
       // Determine metadata properties, prioritizing database properties if present
       const rawSlug = getProperty(page.properties, "slug") || getProperty(page.properties, "Slug");
       const slug = rawSlug ? slugify(rawSlug) : slugify(page.title);
-      
+      const outputFilePath = path.join(outputDir, `${slug}.md`);
+
+      const cached = syncCache[page.id];
+      const isUnchanged = cached && 
+                          cached.last_edited_time === page.last_edited_time && 
+                          cached.slug === slug &&
+                          cached.type === type &&
+                          fs.existsSync(outputFilePath);
+
+      if (isUnchanged) {
+        console.log(`Skipping unchanged ${type}: "${page.title}" (using cache).`);
+        metadataList.push({
+          title: cached.title,
+          slug: cached.slug,
+          description: cached.description,
+          featured: cached.featured,
+        });
+        continue;
+      }
+
+      console.log(`Processing ${type}: "${page.title}" (${page.id})...`);
+
+      // If the slug changed, clean up the file and images under the old slug
+      if (cached && cached.slug !== slug) {
+        console.log(`Slug for page "${page.title}" changed from "${cached.slug}" to "${slug}". Cleaning up old files...`);
+        const oldFilePath = path.join(outputDir, `${cached.slug}.md`);
+        if (fs.existsSync(oldFilePath)) {
+          try {
+            fs.unlinkSync(oldFilePath);
+          } catch (e) {
+            console.error(`Failed to delete old file: ${oldFilePath}`, e.message);
+          }
+        }
+        if (cached.images && Array.isArray(cached.images)) {
+          for (const imgUrl of cached.images) {
+            const cleanRelativePath = imgUrl.replace(/^\/content-images\//, "");
+            const fullImgPath = path.join(projectRoot, "public", "content-images", cleanRelativePath);
+            if (fs.existsSync(fullImgPath)) {
+              try {
+                fs.unlinkSync(fullImgPath);
+              } catch (e) {
+                console.error(`Failed to delete old image: ${fullImgPath}`, e.message);
+              }
+            }
+          }
+        }
+      }
+
       const rawDescription = getProperty(page.properties, "description") || getProperty(page.properties, "Description");
-      
-
-      
-
-      
       const featured = getProperty(page.properties, "featured") || getProperty(page.properties, "Featured") || false;
 
       // Fetch markdown from Notion
@@ -237,6 +325,8 @@ async function syncType(type, parentId) {
         imagesToDownload.push({ altText, imageUrl });
       }
 
+      const downloadedImages = [];
+
       for (const img of imagesToDownload) {
         try {
           const cleanUrl = img.imageUrl.split("?")[0];
@@ -252,9 +342,28 @@ async function syncType(type, parentId) {
           
           const relativeUrl = `/content-images/${type}/${imageFilename}`;
           markdownContent = markdownContent.replace(img.imageUrl, relativeUrl);
+          downloadedImages.push(relativeUrl);
           imageIndex++;
         } catch (imgErr) {
           console.error(`Error downloading image ${img.imageUrl}:`, imgErr.message);
+        }
+      }
+
+      // Clean up unused old images if page was previously synced
+      if (cached && cached.images && Array.isArray(cached.images)) {
+        for (const oldImg of cached.images) {
+          if (!downloadedImages.includes(oldImg)) {
+            const cleanRelativePath = oldImg.replace(/^\/content-images\//, "");
+            const fullImgPath = path.join(projectRoot, "public", "content-images", cleanRelativePath);
+            if (fs.existsSync(fullImgPath)) {
+              try {
+                fs.unlinkSync(fullImgPath);
+                console.log(`Cleaned up unused old image: ${fullImgPath}`);
+              } catch (err) {
+                console.error(`Failed to delete old image ${fullImgPath}:`, err.message);
+              }
+            }
+          }
         }
       }
 
@@ -269,10 +378,20 @@ featured: ${featured}
 `;
 
       const fullFileContent = frontMatter + markdownContent;
-      const outputFilePath = path.join(outputDir, `${slug}.md`);
       
       fs.writeFileSync(outputFilePath, fullFileContent, "utf-8");
       console.log(`Saved Markdown file to ${outputFilePath}`);
+
+      // Update cache
+      syncCache[page.id] = {
+        last_edited_time: page.last_edited_time,
+        slug,
+        title: page.title,
+        description,
+        featured,
+        type,
+        images: downloadedImages
+      };
 
       // Add to index list
       metadataList.push({
@@ -316,6 +435,11 @@ async function startSync() {
       "utf-8"
     );
     console.log(`Saved index JSON file to ${indexPath}`);
+
+    // Save updated cache
+    fs.writeFileSync(cachePath, JSON.stringify(syncCache, null, 2), "utf-8");
+    console.log(`Saved sync cache to ${cachePath}`);
+
     console.log("Synchronization complete successfully!");
   } catch (err) {
     console.error("Notion synchronization failed:", err);

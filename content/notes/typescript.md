@@ -365,3 +365,304 @@ const greet = (name) => `Hello, ${name}!`;
     ```
 
 - Think of generic as it give a multiple variation of the function (variation in argument data type).
+
+# Pick 
+
+- `Pick` is a built-in utility type in TypeScript that lets you create a new type by picking only specific properties from an existing type or Interface.
+
+    ```typescript
+    Pick<Type, Keys>
+    
+    // Type - The original interface or type.
+    // Keys - The properties you want to keep.
+    ```
+
+- Example - Imagine the User table of your database:
+
+    ```typescript
+    interface User {
+      id: number;
+      name: string;
+      email: string;
+      password: string;
+      createdAt: Date;
+    }
+    
+    // When sending data to frontend, you should not expose the password.
+    // Instead of creating another interface:
+    
+    interface PublicUser {
+      id: number;
+      name: string;
+      email: string;
+    }
+    
+    // You can write:
+    
+    type PublicUser = Pick<User, "id" | "name" | "email">;
+    ```
+
+- Why Pick is important?
+    - You can create another interface like i mentioned in the example. But suppose you change the type of id from `string` to `number` . You must remember to update the PublicUser interface manually. But when you use `Pick`, It updates automatically whenever User changes.
+
+# Partial
+
+- `Partial` is another built-in TypeScript utility type that makes every property of a type optional.
+- This is especially useful for updates, where you only send the fields that have changed.
+
+    ```typescript
+    interface User {
+      id: number;
+      name: string;
+      email: string;
+    }
+    
+    // Create a partial version
+    
+    type PartialUser = Partial<User>;
+    
+    // Now typescript treat it as:
+    
+    type PartialUser = {
+      id?: number;
+      name?: string;
+      email?: string;
+    }
+    ```
+
+
+# Readonly
+
+- The `Readonly` utility type in TypeScript is used to make all properties of a given type read-only. This means that once an object of this type is created, its properties cannot be reassigned.
+- Consider an interface `Config` that represents configuration settings for an application:
+
+    ```typescript
+    interface Config {
+      endpoint: string;
+      apiKey: string;
+    }
+    
+    
+    const config: Readonly<Config> = {
+      endpoint: '<https://api.example.com>',
+      apiKey: 'abcdef123456',
+    };
+    
+    // Attempting to modify the object will result in a TypeScript error
+    // config.apiKey = 'newkey'; // Error: Cannot assign to 'apiKey' because it is a read-only property.
+    ```
+
+
+# Record & Maps
+
+- `Record` is a built-in TypeScript utility type.
+- It creates an object type where:
+    - Every **key** has the same type.
+    - Every **value** has the same type.
+- Syntax:
+
+    ```typescript
+    Record<KeyType, ValueType>
+    ```
+
+- Basic example
+
+    ```typescript
+    type Scores = Record<string, number>
+    
+    const scores: Scores = {
+      Prem: 95,
+      Rahul: 88,
+      Amit: 91
+    }
+    
+    // Keys are string
+    // Values are number
+    ```
+
+- Another example
+
+    ```typescript
+    type User = {
+      age: number
+      city: string
+    }
+    
+    type Users = Record<string, User>
+    
+    const users: Users = {
+      Prem: {
+        age: 22,
+        city: "Delhi"
+      },
+      Rahul: {
+        age: 24,
+        city: "Mumbai"
+      }
+    }
+    ```
+
+
+## `Record` vs Index Signature
+
+
+These two are equivalent:
+
+
+```typescript
+typeScores=Record<string,number>
+```
+
+
+```typescript
+typeScores= {
+  [key:string]:number
+}
+```
+
+
+`Record` is simply a cleaner, more readable utility type.
+
+
+## Common Use Cases
+
+- Configuration objects
+- Dictionaries / Lookup tables
+- Caching data by ID
+- API response maps
+- Feature flags
+- Storing entities by their ID
+
+## Why not just use `Map`?
+
+
+Although both store key-value pairs, they serve different purposes.
+
+
+### Use `Record` when:
+
+- You are working with plain JavaScript objects (`{}`).
+- Data will be serialized to JSON.
+- Keys are typically strings (or numbers/symbols).
+- You want simple object access.
+
+    ```typescript
+    scores["Prem"]
+    scores.Prem
+    ```
+
+
+### Use `Map` when:
+
+- Keys can be **any type** (objects, functions, etc.).
+- You need methods like:
+    - `.set()`
+    - `.get()`
+    - `.has()`
+    - `.delete()`
+- You frequently add or remove entries.
+- You need guaranteed insertion order during iteration.
+
+    ```typescript
+    const scores = new Map<string, number>()
+    
+    scores.set("Prem", 95)
+    scores.get("Prem")
+    scores.has("Prem")
+    ```
+
+
+# Exclude
+
+- `Exclude` is a built-in TypeScript utility type.
+- It removes specific types from a union type.
+- Think of it as **subtracting one set of types from another**.
+- Syntax:
+
+    ```typescript
+    Exclude<UnionType,TypesToRemove>
+    ```
+
+- Example:
+
+    ```typescript
+    type Status = "success" | "error" | "loading"
+    
+    type FinalStatus = Exclude<Status, "loading">
+    
+    // Result
+    
+    type FinalStatus = "success" | "error"
+    
+    // Another example:
+    
+    type Numbers = 1 | 2 | 3 | 4
+    
+    type OddNumbers = Exclude<Numbers, 2 | 4>
+    
+    // Result
+    
+    type OddNumbers = 1 | 3
+    ```
+
+
+## **Exclude vs Omit**
+
+
+### `Exclude`
+
+- Works on **union types**.
+- Removes members from a union.
+
+    ```typescript
+    type Status = "success" | "error" | "loading"
+    
+    type Result = Exclude<Status, "loading">
+    ```
+
+
+### `Omit`
+
+- Works on **object types**.
+- Removes object properties.
+
+    ```typescript
+    type User = {
+      id: number
+      name: string
+      age: number
+    }
+    
+    type UserWithoutAge = Omit<User, "age">
+    ```
+
+
+# Type Inference in Zod
+
+- One of Zod's biggest advantages is that it automatically generates TypeScript types from your schemas.
+- You define the schema **once**, and TypeScript infers the corresponding type.
+- This eliminates the need to maintain separate validation schemas and interfaces.
+- Zod Validation:
+
+    ```typescript
+    import { z } from "zod"
+    
+    const UserSchema = z.object({
+      name: z.string(),
+      age: z.number(),
+    })
+    
+    // Generate the typescript type automatically.
+    
+    type User = z.infer<typeof UserSchema>
+    
+    // Now both validation and types come from a single source of truth.
+    
+    // Equivalent inferred type:
+    
+    type User = {
+      name: string
+      age: number
+    }
+    ```
+

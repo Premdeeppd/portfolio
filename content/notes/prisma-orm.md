@@ -201,6 +201,28 @@ npx prisma init
     - TypeScript types.
     - CRUD methods for each model.
     - Auto-completion and type safety in your editor.
+- Code to add a row in user table:
+
+    ```typescript
+    import { PrismaClient } from "@prisma/client";
+    
+    const prisma = new PrismaClient();
+    
+    async function insertUser(username: string, password: string, firstName: string, lastName: string) {
+      const res = await prisma.user.create({
+        data: {
+            username,
+            password,
+            firstName,
+            lastName
+        }
+      })
+      console.log(res);
+    }
+    
+    insertUser("admin1", "123456", "prem", "deep")
+    ```
+
 
 # Relationship in Prisma
 
@@ -228,3 +250,39 @@ Meaning:
     - Specifies the **foreign key field** in the current model.
 - `references: [id]`
     - Specifies which field in the related model the foreign key points to.
+
+## Example of relating the todo and user
+
+
+```typescript
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:mysecretpassword@localhost:5432/postgres"
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  username   String   @unique
+  password   String
+  firstName  String
+  lastName   String
+  todos      Todo[]
+}
+
+model Todo {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String
+  done        Boolean @default(false)
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id])
+}
+```
+
