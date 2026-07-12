@@ -1,6 +1,12 @@
 {
   "notes": [
     {
+      "title": "AWS",
+      "slug": "aws",
+      "description": "Personal knowledge reference note on AWS.",
+      "featured": false
+    },
+    {
       "title": "Express.js",
       "slug": "express-js",
       "description": "Building secure, scalable REST APIs with middleware, routing, and backend best practices.",
