@@ -122,7 +122,7 @@ function NoteDetail() {
 
     loadMarkdown();
     // Scroll to top on page transition
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [slug]);
 
   if (loading) {
