@@ -73,8 +73,8 @@ function ReadWithMe() {
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
             Learn with Me
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-brand-blue/90 font-medium leading-relaxed">
-            Welcome to my personal knowledge base. Here I share quick reference notes and long-form articles about technology, learning paths, and system design.
+          <p className="mt-4 max-w-3xl mx-auto text-base sm:text-lg text-brand-blue/90 font-medium leading-relaxed">
+            I learn by building, experimenting, and documenting what I discover along the way. This page is a collection of the notes and articles I create while exploring new technologies, concepts, and engineering practices. Everything here is written as part of my learning process, and I hope it helps others on theirs as well.
           </p>
         </div>
       </div>

@@ -87,7 +87,7 @@ const skills = [
 function SkillDiv() {
   const renderLogo = (skill) => {
     return (
-      <div className="flex h-14 w-14 items-center justify-center rounded-none bg-brand-blue p-3 text-brand-peach transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110">
+      <div className="flex h-14 w-14 items-center justify-center rounded-none bg-brand-peach p-3 text-brand-blue transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110">
         <div
           aria-hidden="true"
           className={`[&_svg]:h-full [&_svg]:w-full [&_svg]:fill-current [&_svg]:transition-transform ${skill.iconClassName}`}
@@ -98,8 +98,8 @@ function SkillDiv() {
   };
 
   return (
-    <div className="mx-0 sm:mx-4 flex flex-col items-center bg-brand-peach py-8 md:py-10 rounded-none">
-      <h2 className="pb-3 text-center text-xl font-semibold leading-snug text-brand-blue sm:pb-4 sm:text-2xl md:text-3xl lg:text-4xl">
+    <div className="mx-0 sm:mx-4 flex flex-col items-center bg-brand-blue py-8 md:py-10 rounded-none">
+      <h2 className="pb-3 text-center text-xl font-semibold leading-snug text-brand-peach sm:pb-4 sm:text-2xl md:text-3xl lg:text-4xl">
         Tools I used
       </h2>
       <div className="my-8 grid grid-cols-4 gap-x-3 gap-y-5 md:my-12 md:grid-cols-6 md:gap-8">
