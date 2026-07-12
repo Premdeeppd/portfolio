@@ -63,7 +63,9 @@ function ReadWithMe() {
   const notes = sortNotes(contentIndex?.notes || []);
   const articles = contentIndex?.articles || [];
 
-
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="pb-16 space-y-8">
