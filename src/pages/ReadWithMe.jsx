@@ -2,8 +2,65 @@ import React from "react";
 import { Link } from "react-router-dom";
 import contentIndex from "../../content/index.json";
 
+const CUSTOM_ORDER_KEYS = [
+  "git",
+  "javascript",
+  "typescript",
+  "node",
+  "express",
+  "jwt",
+  "react",
+  "recoil",
+  "next",
+  "mongodb",
+  "sql",
+  "postgresql",
+  "prisma",
+  "aws"
+];
+
+function getCustomOrderIndex(note) {
+  const title = (note.title || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const slug = (note.slug || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  
+  const checkTarget = (target) => {
+    if (target.includes("github") || target.includes("git")) return "git";
+    if (target.includes("javascript")) return "javascript";
+    if (target.includes("typescript")) return "typescript";
+    if (target.includes("nodejs") || target.includes("node")) return "node";
+    if (target.includes("express")) return "express";
+    if (target.includes("jwt") || target.includes("jsonwebtoken") || target.includes("token")) return "jwt";
+    if (target.includes("react")) return "react";
+    if (target.includes("recoil")) return "recoil";
+    if (target.includes("nextjs") || target.includes("next")) return "next";
+    if (target.includes("mongodb") || target.includes("mongo")) return "mongodb";
+    if (target.includes("postgresql") || target.includes("postgres")) return "postgresql";
+    if (target.includes("sql")) return "sql";
+    if (target.includes("prisma")) return "prisma";
+    if (target.includes("aws")) return "aws";
+    return null;
+  };
+
+  const key = checkTarget(title) || checkTarget(slug);
+  if (!key) return Infinity;
+  
+  const index = CUSTOM_ORDER_KEYS.indexOf(key);
+  return index === -1 ? Infinity : index;
+}
+
+function sortNotes(notesList) {
+  return [...notesList].sort((a, b) => {
+    const idxA = getCustomOrderIndex(a);
+    const idxB = getCustomOrderIndex(b);
+    if (idxA !== idxB) {
+      return idxA - idxB;
+    }
+    return a.title.localeCompare(b.title);
+  });
+}
+
 function ReadWithMe() {
-  const notes = contentIndex?.notes || [];
+  const notes = sortNotes(contentIndex?.notes || []);
   const articles = contentIndex?.articles || [];
 
 

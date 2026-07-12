@@ -1,18 +1,6 @@
 {
   "notes": [
     {
-      "title": "AWS",
-      "slug": "aws",
-      "description": "Personal knowledge reference note on AWS.",
-      "featured": false
-    },
-    {
-      "title": "Express.js",
-      "slug": "express-js",
-      "description": "Building secure, scalable REST APIs with middleware, routing, and backend best practices.",
-      "featured": false
-    },
-    {
       "title": "Git and Github",
       "slug": "git-and-github",
       "description": "Version control fundamentals, branching strategies, collaboration workflows, and best practices.",
@@ -25,21 +13,9 @@
       "featured": false
     },
     {
-      "title": "Json Web Token (JWT) ",
-      "slug": "jwt",
-      "description": "Understanding authentication, authorization, token-based security, and session management.",
-      "featured": false
-    },
-    {
-      "title": "MongoDB",
-      "slug": "mongodb",
-      "description": "Schema design, indexing, queries, aggregation, and performance optimization in MongoDB.",
-      "featured": false
-    },
-    {
-      "title": "Next.js",
-      "slug": "nextjs",
-      "description": "Personal knowledge reference note on Next.js.",
+      "title": "Typescript",
+      "slug": "typescript",
+      "description": "Building safer, scalable JavaScript applications with static typing and modern language features.",
       "featured": false
     },
     {
@@ -49,15 +25,15 @@
       "featured": false
     },
     {
-      "title": "PostgreSQL",
-      "slug": "postgresql",
-      "description": "Integrating PostgreSQL with Node.js to build reliable, performant applications using relational data, transactions, and efficient queries.",
+      "title": "Express.js",
+      "slug": "express-js",
+      "description": "Building secure, scalable REST APIs with middleware, routing, and backend best practices.",
       "featured": false
     },
     {
-      "title": "Prisma (ORM)",
-      "slug": "prisma-orm",
-      "description": "Simplifying database access in Node.js with type-safe queries, schema modeling, migrations, and an intuitive developer experience.",
+      "title": "Json Web Token (JWT) ",
+      "slug": "jwt",
+      "description": "Understanding authentication, authorization, token-based security, and session management.",
       "featured": false
     },
     {
@@ -73,15 +49,39 @@
       "featured": false
     },
     {
+      "title": "Next.js",
+      "slug": "nextjs",
+      "description": "Personal knowledge reference note on Next.js.",
+      "featured": false
+    },
+    {
+      "title": "MongoDB",
+      "slug": "mongodb",
+      "description": "Schema design, indexing, queries, aggregation, and performance optimization in MongoDB.",
+      "featured": false
+    },
+    {
       "title": "SQL",
       "slug": "sql",
       "description": "Mastering relational databases through efficient queries, schema design, joins, indexing, and optimization.",
       "featured": false
     },
     {
-      "title": "Typescript",
-      "slug": "typescript",
-      "description": "Building safer, scalable JavaScript applications with static typing and modern language features.",
+      "title": "PostgreSQL",
+      "slug": "postgresql",
+      "description": "Integrating PostgreSQL with Node.js to build reliable, performant applications using relational data, transactions, and efficient queries.",
+      "featured": false
+    },
+    {
+      "title": "Prisma (ORM)",
+      "slug": "prisma-orm",
+      "description": "Simplifying database access in Node.js with type-safe queries, schema modeling, migrations, and an intuitive developer experience.",
+      "featured": false
+    },
+    {
+      "title": "AWS",
+      "slug": "aws",
+      "description": "Personal knowledge reference note on AWS.",
       "featured": false
     }
   ],
