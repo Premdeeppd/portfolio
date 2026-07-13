@@ -1,7 +1,7 @@
 ---
 title: "AWS"
 slug: "aws"
-description: "Personal knowledge reference note on AWS."
+description: "Learning the core AWS services used to deploy, scale, secure, and operate modern cloud applications."
 featured: false
 ---
 

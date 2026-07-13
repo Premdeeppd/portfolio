@@ -50,8 +50,8 @@
     },
     {
       "title": "Next.js",
-      "slug": "nextjs",
-      "description": "Personal knowledge reference note on Next.js.",
+      "slug": "next-js",
+      "description": "Building production-ready React applications with server-side rendering, routing, data fetching, and performance optimizations.\n",
       "featured": false
     },
     {
@@ -81,7 +81,7 @@
     {
       "title": "AWS",
       "slug": "aws",
-      "description": "Personal knowledge reference note on AWS.",
+      "description": "Learning the core AWS services used to deploy, scale, secure, and operate modern cloud applications.",
       "featured": false
     }
   ],
@@ -91,6 +91,12 @@
       "slug": "cms-using-notion-node-and-react",
       "description": "Why pay for a headless CMS when you can write in Notion and compile directly to local static assets?",
       "featured": true
+    },
+    {
+      "title": "Why Does ENV Exist in a Dockerfile If We Already Have .env?",
+      "slug": "why-does-env-exist-in-dockerfile",
+      "description": "Learn the difference between Docker's ENV instruction and a .env file, when to use each, and how to manage environment variables and secrets using Docker best practices.",
+      "featured": false
     }
   ]
 }

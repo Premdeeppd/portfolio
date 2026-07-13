@@ -1,7 +1,8 @@
 ---
 title: "Next.js"
-slug: "nextjs"
-description: "Personal knowledge reference note on Next.js."
+slug: "next-js"
+description: "Building production-ready React applications with server-side rendering, routing, data fetching, and performance optimizations.
+"
 featured: false
 ---
 
