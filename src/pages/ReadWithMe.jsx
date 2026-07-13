@@ -158,7 +158,7 @@ function ReadWithMe() {
                         </span>
                       )}
                     </div>
-                    <p className="text-white/80 text-sm leading-relaxed line-clamp-2">
+                    <p className="text-white/80 text-sm leading-relaxed line-clamp-1">
                       {article.description}
                     </p>
                   </div>
