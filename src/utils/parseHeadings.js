@@ -1,3 +1,13 @@
+const cleanMarkdown = (str) => {
+  return str
+    .replace(/`([^`]+)`/g, "$1")            // code `text` -> text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // links [text](url) -> text
+    .replace(/(\*\*|__)(.*?)\1/g, "$2")      // bold **text** -> text
+    .replace(/(\*|_)(.*?)\1/g, "$2")        // italic *text* -> text
+    .replace(/~~(.*?)~~/g, "$1")            // strikethrough ~~text~~ -> text
+    .trim();
+};
+
 /**
  * Parses markdown content and extracts headings (H1-H6), skipping any headings
  * or comments starting with '#' inside fenced code blocks (``` or ~~~).
@@ -43,10 +53,10 @@ export const parseHeadings = (markdown) => {
     const headingMatch = line.match(/^(#{1,6})\s+(.+)$/);
     if (headingMatch) {
       const level = headingMatch[1].length;
-      const text = headingMatch[2].trim();
+      const rawText = headingMatch[2].trim();
+      const text = cleanMarkdown(rawText);
       const id = text
         .toLowerCase()
-        .trim()
         .replace(/\s+/g, "-")
         .replace(/[^\w\-]+/g, "")
         .replace(/\-\-+/g, "-");
