@@ -39,8 +39,8 @@ function Footer() {
     <footer className="mx-0 sm:mx-4 mt-8 bg-brand-blue text-white rounded-none border-t border-brand-peach/20 py-6 px-4 sm:px-8">
       <div className="max-w-4xl mx-auto flex flex-col items-center gap-4 text-center">
         {/* Navigation Links Row */}
-        <nav aria-label="Footer Navigation">
-          <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-sm font-medium p-0 m-0 list-none">
+        <nav aria-label="Footer Navigation" className="w-full max-w-full overflow-x-auto">
+          <ul className="flex flex-nowrap items-center justify-center gap-2 sm:gap-8 text-xs sm:text-sm font-medium p-0 m-0 list-none whitespace-nowrap">
             <li>
               <Link
                 to="/#home"
