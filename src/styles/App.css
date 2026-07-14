@@ -8,14 +8,17 @@
   --spacing-30: 7.5rem;
 }
 
-html {
+html, body {
   scroll-behavior: smooth;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .App {
     background-color: var(--color-brand-blue);
     min-height: 100vh;
     color: #ffffff;
+    overflow-x: hidden;
 }
 
 /* Hide scrollbar utility */
