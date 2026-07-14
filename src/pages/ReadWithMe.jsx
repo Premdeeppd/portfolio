@@ -66,7 +66,20 @@ function ReadWithMe() {
   const ogImageUrl = "https://www.premdeep.co.in/og/read-with-me.png";
 
   React.useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash;
+      if (hash) {
+        const id = hash.replace("#", "");
+        const elem = document.getElementById(id);
+        if (elem) {
+          setTimeout(() => {
+            elem.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+          return;
+        }
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }, []);
 
   return (

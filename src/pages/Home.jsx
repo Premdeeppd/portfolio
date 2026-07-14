@@ -48,6 +48,43 @@ function Home() {
                 "author": {
                   "@id": "https://www.premdeep.co.in/#person"
                 }
+              },
+              {
+                "@type": "ItemList",
+                "@id": "https://www.premdeep.co.in/#sitenavigation",
+                "name": "Primary Navigation",
+                "itemListElement": [
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 1,
+                    "name": "Home",
+                    "url": "https://www.premdeep.co.in/"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 2,
+                    "name": "Learn with Me",
+                    "url": "https://www.premdeep.co.in/read-with-me"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 3,
+                    "name": "Technical Notes",
+                    "url": "https://www.premdeep.co.in/read-with-me#notes"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 4,
+                    "name": "Articles",
+                    "url": "https://www.premdeep.co.in/read-with-me#articles"
+                  },
+                  {
+                    "@type": "SiteNavigationElement",
+                    "position": 5,
+                    "name": "Contact",
+                    "url": "https://www.premdeep.co.in/#contact"
+                  }
+                ]
               }
             ]
           })}

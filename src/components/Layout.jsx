@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar.jsx";
+import Footer from "./Footer.jsx";
 import { Analytics } from "@vercel/analytics/react";
 import "../styles/App.css";
 
@@ -11,6 +12,7 @@ export default function Layout() {
       <main className="min-h-[calc(100vh-80px)] pb-12">
         <Outlet />
       </main>
+      <Footer />
       <Analytics />
     </div>
   );

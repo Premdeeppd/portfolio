@@ -28,6 +28,13 @@ function NavBar() {
     }
   };
 
+  const handleLearnWithMeClick = (e) => {
+    if (location.pathname === "/read-with-me") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const isReadWithMeActive =
     location.pathname.startsWith("/read-with-me") ||
     location.pathname.startsWith("/notes") ||
@@ -51,6 +58,7 @@ function NavBar() {
         <li>
           <Link
             to="/read-with-me"
+            onClick={handleLearnWithMeClick}
             aria-label="Go to Learn with Me"
             className={`font-bold text-brand-blue no-underline transition-colors hover:text-blue-700 tracking-wide ${
               isReadWithMeActive ? "underline decoration-brand-blue decoration-2 underline-offset-4" : ""
