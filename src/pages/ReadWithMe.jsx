@@ -74,7 +74,11 @@ function ReadWithMe() {
       <Head>
         <title>Learn with Me - Notes & Articles | Prem</title>
         <meta name="description" content="A collection of structured notes, deep dives, and articles on full-stack development, cloud, and databases." />
+        <meta name="author" content="Prem Deep" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.premdeep.co.in/read-with-me" />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.premdeep.co.in/read-with-me" />
         <meta property="og:title" content="Learn with Me - Notes & Articles | Prem" />
         <meta property="og:description" content="A collection of structured notes, deep dives, and articles on full-stack development, cloud, and databases." />
         <meta property="og:image" content={ogImageUrl} />
@@ -82,6 +86,37 @@ function ReadWithMe() {
         <meta name="twitter:title" content="Learn with Me - Notes & Articles | Prem" />
         <meta name="twitter:description" content="A collection of structured notes, deep dives, and articles on full-stack development, cloud, and databases." />
         <meta name="twitter:image" content={ogImageUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "CollectionPage",
+                "@id": "https://www.premdeep.co.in/read-with-me#webpage",
+                "url": "https://www.premdeep.co.in/read-with-me",
+                "name": "Learn with Me - Notes & Articles | Prem",
+                "description": "A collection of structured notes, deep dives, and articles on full-stack development, cloud, and databases."
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://www.premdeep.co.in/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Learn with Me",
+                    "item": "https://www.premdeep.co.in/read-with-me"
+                  }
+                ]
+              }
+            ]
+          })}
+        </script>
       </Head>
 
       {/* Header Section */}

@@ -139,12 +139,18 @@ function NoteDetail() {
 
   const ogImageUrl = `https://www.premdeep.co.in/og/notes/${slug}.png`;
 
+  const noteUrl = `https://www.premdeep.co.in/notes/${slug}`;
+
   return (
     <div className="flex flex-col bg-brand-blue text-white min-h-screen">
       <Head>
         <title>{currentNoteMeta.title} | Prem</title>
         <meta name="description" content={currentNoteMeta.description} />
+        <meta name="author" content="Prem Deep" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={noteUrl} />
         <meta property="og:type" content="article" />
+        <meta property="og:url" content={noteUrl} />
         <meta property="og:title" content={`${currentNoteMeta.title} | Prem`} />
         <meta property="og:description" content={currentNoteMeta.description} />
         <meta property="og:image" content={ogImageUrl} />
@@ -152,6 +158,58 @@ function NoteDetail() {
         <meta name="twitter:title" content={`${currentNoteMeta.title} | Prem`} />
         <meta name="twitter:description" content={currentNoteMeta.description} />
         <meta name="twitter:image" content={ogImageUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "TechArticle",
+                "@id": `${noteUrl}#article`,
+                "headline": currentNoteMeta.title,
+                "description": currentNoteMeta.description,
+                "url": noteUrl,
+                "image": ogImageUrl,
+                "author": {
+                  "@type": "Person",
+                  "name": "Prem Deep",
+                  "url": "https://www.premdeep.co.in"
+                },
+                "publisher": {
+                  "@type": "Person",
+                  "name": "Prem Deep",
+                  "url": "https://www.premdeep.co.in"
+                },
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "@id": noteUrl
+                }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://www.premdeep.co.in/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Learn with Me",
+                    "item": "https://www.premdeep.co.in/read-with-me"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": currentNoteMeta.title,
+                    "item": noteUrl
+                  }
+                ]
+              }
+            ]
+          })}
+        </script>
       </Head>
       <DocumentOutline content={content} />
 

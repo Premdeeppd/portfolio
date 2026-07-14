@@ -224,6 +224,8 @@ const mdComponents = {
     <img
       src={src}
       alt={alt}
+      loading="lazy"
+      decoding="async"
       className="my-6 max-w-full h-auto rounded-none border border-white/20 shadow-md mx-auto"
     />
   ),

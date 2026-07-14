@@ -82,12 +82,18 @@ function ArticleDetail() {
 
   const ogImageUrl = `https://www.premdeep.co.in/og/articles/${slug}.png`;
 
+  const articleUrl = `https://www.premdeep.co.in/articles/${slug}`;
+
   return (
     <div className="flex flex-col bg-brand-blue text-white min-h-screen">
       <Head>
         <title>{currentArticleMeta.title} | Prem</title>
         <meta name="description" content={currentArticleMeta.description} />
+        <meta name="author" content="Prem Deep" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={articleUrl} />
         <meta property="og:type" content="article" />
+        <meta property="og:url" content={articleUrl} />
         <meta property="og:title" content={`${currentArticleMeta.title} | Prem`} />
         <meta property="og:description" content={currentArticleMeta.description} />
         <meta property="og:image" content={ogImageUrl} />
@@ -95,6 +101,58 @@ function ArticleDetail() {
         <meta name="twitter:title" content={`${currentArticleMeta.title} | Prem`} />
         <meta name="twitter:description" content={currentArticleMeta.description} />
         <meta name="twitter:image" content={ogImageUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "TechArticle",
+                "@id": `${articleUrl}#article`,
+                "headline": currentArticleMeta.title,
+                "description": currentArticleMeta.description,
+                "url": articleUrl,
+                "image": ogImageUrl,
+                "author": {
+                  "@type": "Person",
+                  "name": "Prem Deep",
+                  "url": "https://www.premdeep.co.in"
+                },
+                "publisher": {
+                  "@type": "Person",
+                  "name": "Prem Deep",
+                  "url": "https://www.premdeep.co.in"
+                },
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "@id": articleUrl
+                }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://www.premdeep.co.in/"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Learn with Me",
+                    "item": "https://www.premdeep.co.in/read-with-me"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": currentArticleMeta.title,
+                    "item": articleUrl
+                  }
+                ]
+              }
+            ]
+          })}
+        </script>
       </Head>
       <DocumentOutline content={content} />
 

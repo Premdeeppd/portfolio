@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-og-images.js && vite-react-ssg build",
+    "build": "node scripts/generate-og-images.js && node scripts/generate-sitemap.js && vite-react-ssg build",
     "lint": "eslint .",
     "preview": "vite preview",
     "sync": "node scripts/notion-sync.js"
