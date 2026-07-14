@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Head } from "vite-react-ssg";
 
 function NotFound() {
   return (
     <div className="mx-0 sm:mx-4 flex flex-col items-center justify-center text-center bg-brand-peach pt-30 pb-20 px-4 rounded-none shadow-md">
+      <Head>
+        <title>Page Not Found | Prem</title>
+        <meta name="description" content="The page you are looking for does not exist." />
+      </Head>
       <h1 className="text-7xl font-bold text-brand-blue mb-4">404</h1>
       <h2 className="text-2xl font-semibold text-brand-blue/90 mb-6">
         Oops! Page Not Found

@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { Head } from "vite-react-ssg";
 import contentIndex from "../../content/index.json";
 import MarkdownRenderer from "../components/MarkdownRenderer";
 import DocumentOutline from "../components/DocumentOutline";
 import NotFound from "./NotFound";
 import authorImg from "../assets/images/image.png";
 
-// Lazy load markdown modules in Vite
-const noteModules = import.meta.glob("/content/notes/*.md", { query: "?raw", import: "default" });
+
+// Eager load markdown modules for SSG pre-rendering
+const noteModules = import.meta.glob("/content/notes/*.md", { query: "?raw", import: "default", eager: true });
 
 function parseMarkdown(rawText) {
+  if (!rawText) return { metadata: {}, body: "" };
   const match = rawText.match(/^---\r?\n([\s\S]+?)\r?\n---\r?\n([\s\S]*)$/);
   if (!match) return { metadata: {}, body: rawText };
   const [, yamlText, body] = match;
@@ -84,12 +87,18 @@ function sortNotes(notesList) {
 
 function NoteDetail() {
   const { slug } = useParams();
-  const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
 
   const notes = sortNotes(contentIndex?.notes || []);
   const currentNoteMeta = notes.find((n) => n.slug === slug);
+
+  // Synchronous initial markdown load for SSG pre-rendering
+  const fileKey = `/content/notes/${slug}.md`;
+  const rawText = noteModules[fileKey] || "";
+  const initialBody = parseMarkdown(rawText).body;
+
+  const [content, setContent] = useState(initialBody);
+  const [loading, setLoading] = useState(!rawText);
+  const [notFound, setNotFound] = useState(!currentNoteMeta || !rawText);
 
   // Pagination: prev/next notes based on order
   const currentIndex = notes.findIndex((n) => n.slug === slug);
@@ -97,32 +106,20 @@ function NoteDetail() {
   const nextNote = currentIndex > 0 ? notes[currentIndex - 1] : null;
 
   useEffect(() => {
-    async function loadMarkdown() {
-      setLoading(true);
+    const key = `/content/notes/${slug}.md`;
+    if (noteModules[key]) {
+      const { body } = parseMarkdown(noteModules[key]);
+      setContent(body);
       setNotFound(false);
-      
-      const fileKey = `/content/notes/${slug}.md`;
-      if (!noteModules[fileKey]) {
-        setNotFound(true);
-        setLoading(false);
-        return;
-      }
-
-      try {
-        const rawText = await noteModules[fileKey]();
-        const { body } = parseMarkdown(rawText);
-        setContent(body);
-      } catch (err) {
-        console.error("Error loading note markdown:", err);
-        setNotFound(true);
-      } finally {
-        setLoading(false);
-      }
+      setLoading(false);
+    } else {
+      setNotFound(true);
+      setLoading(false);
     }
 
-    loadMarkdown();
-    // Scroll to top on page transition
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }, [slug]);
 
   if (loading) {
@@ -140,10 +137,22 @@ function NoteDetail() {
     return <NotFound />;
   }
 
-
+  const ogImageUrl = `https://www.premdeep.co.in/og/notes/${slug}.png`;
 
   return (
     <div className="flex flex-col bg-brand-blue text-white min-h-screen">
+      <Head>
+        <title>{currentNoteMeta.title} | Prem</title>
+        <meta name="description" content={currentNoteMeta.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={`${currentNoteMeta.title} | Prem`} />
+        <meta property="og:description" content={currentNoteMeta.description} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${currentNoteMeta.title} | Prem`} />
+        <meta name="twitter:description" content={currentNoteMeta.description} />
+        <meta name="twitter:image" content={ogImageUrl} />
+      </Head>
       <DocumentOutline content={content} />
 
       {/* Unified Brand Peach Block */}

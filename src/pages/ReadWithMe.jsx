@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Head } from "vite-react-ssg";
 import contentIndex from "../../content/index.json";
 
 const CUSTOM_ORDER_KEYS = [
@@ -62,6 +63,7 @@ function sortNotes(notesList) {
 function ReadWithMe() {
   const notes = sortNotes(contentIndex?.notes || []);
   const articles = contentIndex?.articles || [];
+  const ogImageUrl = "https://www.premdeep.co.in/og/read-with-me.png";
 
   React.useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -69,6 +71,19 @@ function ReadWithMe() {
 
   return (
     <div className="pb-16 space-y-8">
+      <Head>
+        <title>Learn with Me - Notes & Articles | Prem</title>
+        <meta name="description" content="A collection of structured notes, deep dives, and articles on full-stack development, cloud, and databases." />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Learn with Me - Notes & Articles | Prem" />
+        <meta property="og:description" content="A collection of structured notes, deep dives, and articles on full-stack development, cloud, and databases." />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Learn with Me - Notes & Articles | Prem" />
+        <meta name="twitter:description" content="A collection of structured notes, deep dives, and articles on full-stack development, cloud, and databases." />
+        <meta name="twitter:image" content={ogImageUrl} />
+      </Head>
+
       {/* Header Section */}
       <div className="mx-0 sm:mx-4 bg-brand-peach rounded-none text-brand-blue pt-30 pb-12 px-6 text-center">
         <div className="mx-auto max-w-4xl">

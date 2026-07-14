@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { Head } from "vite-react-ssg";
 import contentIndex from "../../content/index.json";
 import MarkdownRenderer from "../components/MarkdownRenderer";
 import DocumentOutline from "../components/DocumentOutline";
 import NotFound from "./NotFound";
 import authorImg from "../assets/images/image.png";
 
-// Lazy load markdown modules in Vite
-const articleModules = import.meta.glob("/content/articles/*.md", { query: "?raw", import: "default" });
+
+// Eager load markdown modules for SSG pre-rendering
+const articleModules = import.meta.glob("/content/articles/*.md", { query: "?raw", import: "default", eager: true });
 
 function parseMarkdown(rawText) {
+  if (!rawText) return { metadata: {}, body: "" };
   const match = rawText.match(/^---\r?\n([\s\S]+?)\r?\n---\r?\n([\s\S]*)$/);
   if (!match) return { metadata: {}, body: rawText };
   const [, yamlText, body] = match;
@@ -27,12 +30,18 @@ function parseMarkdown(rawText) {
 
 function ArticleDetail() {
   const { slug } = useParams();
-  const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
 
   const articles = contentIndex?.articles || [];
   const currentArticleMeta = articles.find((a) => a.slug === slug);
+
+  // Synchronous initial markdown load for SSG pre-rendering
+  const fileKey = `/content/articles/${slug}.md`;
+  const rawText = articleModules[fileKey] || "";
+  const initialBody = parseMarkdown(rawText).body;
+
+  const [content, setContent] = useState(initialBody);
+  const [loading, setLoading] = useState(!rawText);
+  const [notFound, setNotFound] = useState(!currentArticleMeta || !rawText);
 
   // Pagination: prev/next articles based on order
   const currentIndex = articles.findIndex((a) => a.slug === slug);
@@ -40,32 +49,20 @@ function ArticleDetail() {
   const nextArticle = currentIndex > 0 ? articles[currentIndex - 1] : null;
 
   useEffect(() => {
-    async function loadMarkdown() {
-      setLoading(true);
+    const key = `/content/articles/${slug}.md`;
+    if (articleModules[key]) {
+      const { body } = parseMarkdown(articleModules[key]);
+      setContent(body);
       setNotFound(false);
-      
-      const fileKey = `/content/articles/${slug}.md`;
-      if (!articleModules[fileKey]) {
-        setNotFound(true);
-        setLoading(false);
-        return;
-      }
-
-      try {
-        const rawText = await articleModules[fileKey]();
-        const { body } = parseMarkdown(rawText);
-        setContent(body);
-      } catch (err) {
-        console.error("Error loading article markdown:", err);
-        setNotFound(true);
-      } finally {
-        setLoading(false);
-      }
+      setLoading(false);
+    } else {
+      setNotFound(true);
+      setLoading(false);
     }
 
-    loadMarkdown();
-    // Scroll to top on page transition
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }, [slug]);
 
   if (loading) {
@@ -83,10 +80,22 @@ function ArticleDetail() {
     return <NotFound />;
   }
 
-
+  const ogImageUrl = `https://www.premdeep.co.in/og/articles/${slug}.png`;
 
   return (
     <div className="flex flex-col bg-brand-blue text-white min-h-screen">
+      <Head>
+        <title>{currentArticleMeta.title} | Prem</title>
+        <meta name="description" content={currentArticleMeta.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={`${currentArticleMeta.title} | Prem`} />
+        <meta property="og:description" content={currentArticleMeta.description} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${currentArticleMeta.title} | Prem`} />
+        <meta name="twitter:description" content={currentArticleMeta.description} />
+        <meta name="twitter:image" content={ogImageUrl} />
+      </Head>
       <DocumentOutline content={content} />
 
       {/* Unified Brand Peach Block */}
