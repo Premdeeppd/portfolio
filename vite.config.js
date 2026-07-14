@@ -16,7 +16,7 @@ export default defineConfig({
     includedRoutes() {
       const notesPaths = (contentIndex.notes || []).map((n) => `/notes/${n.slug}`);
       const articlesPaths = (contentIndex.articles || []).map((a) => `/articles/${a.slug}`);
-      return ["/", "/read-with-me", ...notesPaths, ...articlesPaths];
+      return ["/", "/read-with-me", "/404", ...notesPaths, ...articlesPaths];
     },
   },
 });
