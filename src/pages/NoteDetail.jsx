@@ -42,6 +42,7 @@ const CUSTOM_ORDER_KEYS = [
   "sql",
   "postgresql",
   "prisma",
+  "docker",
   "aws"
 ];
 
@@ -63,6 +64,7 @@ function getCustomOrderIndex(note) {
     if (target.includes("postgresql") || target.includes("postgres")) return "postgresql";
     if (target.includes("sql")) return "sql";
     if (target.includes("prisma")) return "prisma";
+    if (target.includes("docker")) return "docker";
     if (target.includes("aws")) return "aws";
     return null;
   };

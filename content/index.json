@@ -83,6 +83,12 @@
       "slug": "aws",
       "description": "Learning the core AWS services used to deploy, scale, secure, and operate modern cloud applications.",
       "featured": false
+    },
+    {
+      "title": "Docker",
+      "slug": "docker",
+      "description": "Everything a developer needs to understand Docker—from local development environments to production deployments.",
+      "featured": false
     }
   ],
   "articles": [
