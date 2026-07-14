@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { parseHeadings } from "../utils/parseHeadings";
 
 // Safe padding mapping for Tailwind class compiler
 const paddingMap = {
@@ -8,25 +9,6 @@ const paddingMap = {
   4: "pl-9",
   5: "pl-12",
   6: "pl-16",
-};
-
-const parseHeadings = (markdown) => {
-  const headingRegex = /^(#{1,6})\s+(.+)$/gm;
-  const headings = [];
-  let match;
-  while ((match = headingRegex.exec(markdown)) !== null) {
-    const level = match[1].length;
-    const text = match[2].trim();
-    // Exclude the main title heading # if we want, or list everything
-    const id = text
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, "-")
-      .replace(/[^\w\-]+/g, "")
-      .replace(/\-\-+/g, "-");
-    headings.push({ level, text, id });
-  }
-  return headings;
 };
 
 function TableOfContents({ content }) {

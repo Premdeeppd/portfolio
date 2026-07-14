@@ -1,22 +1,5 @@
 import React, { useEffect, useState } from "react";
-
-const parseHeadings = (markdown) => {
-  const headingRegex = /^(#{1,6})\s+(.+)$/gm;
-  const headings = [];
-  let match;
-  while ((match = headingRegex.exec(markdown)) !== null) {
-    const level = match[1].length;
-    const text = match[2].trim();
-    const id = text
-      .toLowerCase()
-      .trim()
-      .replace(/\s+/g, "-")
-      .replace(/[^\w\-]+/g, "")
-      .replace(/\-\-+/g, "-");
-    headings.push({ level, text, id });
-  }
-  return headings;
-};
+import { parseHeadings } from "../utils/parseHeadings";
 
 function DocumentOutline({ content }) {
   const [headings, setHeadings] = useState([]);
