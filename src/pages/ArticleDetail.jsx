@@ -101,7 +101,7 @@ function ArticleDetail() {
       {/* Unified Brand Peach Block */}
       <div className="mx-0 sm:mx-4 mb-16 bg-brand-peach text-slate-800 rounded-none shadow-md flex-grow flex flex-col">
         {/* Top Header Section */}
-        <header className="pt-20 sm:pt-30 pb-6 sm:pb-10 px-4 sm:px-10 text-brand-blue">
+        <header className="pt-30 pb-10 px-6 sm:px-10 text-brand-blue">
           <div className="max-w-4xl mx-auto">
             {/* Breadcrumbs */}
             <nav className="flex text-xs font-bold uppercase tracking-wider text-brand-blue/70 mb-4" aria-label="Breadcrumb">
@@ -120,10 +120,10 @@ function ArticleDetail() {
               </ol>
             </nav>
 
-            <h1 className="text-2xl font-extrabold sm:text-4xl md:text-5xl leading-tight text-brand-blue break-words">
+            <h1 className="text-3xl font-extrabold sm:text-4xl md:text-5xl leading-tight text-brand-blue">
               {currentArticleMeta.title}
             </h1>
-            <p className="mt-4 text-sm sm:text-lg text-slate-700 font-medium leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
               {currentArticleMeta.description}
             </p>
 
@@ -132,7 +132,7 @@ function ArticleDetail() {
               <img
                 src={authorImg}
                 alt="Prem Deep"
-                className="w-10 h-10 sm:w-12 sm:h-12 object-cover border border-brand-blue shrink-0"
+                className="w-12 h-12 object-cover border border-brand-blue"
               />
               <div className="flex flex-col">
                 <span className="text-sm font-extrabold text-brand-blue">Prem Deep</span>
@@ -143,24 +143,24 @@ function ArticleDetail() {
         </header>
 
         {/* Thick Divider */}
-        <div className="max-w-4xl mx-auto w-full px-4 sm:px-10">
+        <div className="max-w-4xl mx-auto w-full px-6 sm:px-10">
           <hr className="border-t-[3px] border-brand-blue" />
         </div>
 
         {/* Main Content Layout */}
-        <div className="py-6 sm:py-10 px-4 sm:px-10 flex-grow">
-          <div className="max-w-4xl mx-auto overflow-x-hidden">
+        <div className="py-10 px-6 sm:px-10 flex-grow">
+          <div className="max-w-4xl mx-auto">
             <MarkdownRenderer content={content} />
           </div>
         </div>
 
         {/* Thick Divider */}
-        <div className="max-w-4xl mx-auto w-full px-4 sm:px-10">
+        <div className="max-w-4xl mx-auto w-full px-6 sm:px-10">
           <hr className="border-t-[3px] border-brand-blue" />
         </div>
 
         {/* Bottom Section: Previous/Next Navigation */}
-        <footer className="py-6 sm:py-10 px-4 sm:px-10">
+        <footer className="py-10 px-6 sm:px-10">
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
             {prevArticle ? (
               <Link

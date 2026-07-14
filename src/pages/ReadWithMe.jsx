@@ -85,12 +85,12 @@ function ReadWithMe() {
       </Head>
 
       {/* Header Section */}
-      <div className="mx-0 sm:mx-4 bg-brand-peach rounded-none text-brand-blue pt-20 sm:pt-30 pb-8 sm:pb-12 px-4 sm:px-6 text-center">
+      <div className="mx-0 sm:mx-4 bg-brand-peach rounded-none text-brand-blue pt-30 pb-12 px-6 text-center">
         <div className="mx-auto max-w-4xl">
-          <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
             Learn with Me
           </h1>
-          <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-lg text-brand-blue/90 font-medium leading-relaxed">
+          <p className="mt-4 max-w-3xl mx-auto text-base sm:text-lg text-brand-blue/90 font-medium leading-relaxed">
             I learn by building, experimenting, and documenting what I discover along the way. This page is a collection of the notes and articles I create while exploring new technologies, concepts, and engineering practices. Everything here is written as part of my learning process, and I hope it helps others on theirs as well.
           </p>
         </div>
