@@ -181,7 +181,7 @@ const mdComponents = {
     return <pre className="bg-slate-950 p-4 overflow-x-auto rounded-none">{children}</pre>;
   },
   code: ({ children }) => (
-    <code className="bg-brand-blue/10 px-1.5 py-0.5 rounded-none font-mono text-sm text-brand-blue break-words whitespace-pre-wrap">
+    <code className="bg-brand-blue/10 px-1.5 py-0.5 rounded-none font-mono text-[0.85em] text-brand-blue break-words whitespace-pre-wrap">
       {children}
     </code>
   ),
