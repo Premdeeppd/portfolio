@@ -2,7 +2,19 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/((?!articles|notes|read-with-me|404|.*\\.).*)",
+      "source": "/read-with-me",
+      "destination": "/read-with-me.html"
+    },
+    {
+      "source": "/notes/:slug",
+      "destination": "/notes/:slug.html"
+    },
+    {
+      "source": "/articles/:slug",
+      "destination": "/articles/:slug.html"
+    },
+    {
+      "source": "/((?!articles|notes|read-with-me|.*\\.).*)",
       "destination": "/index.html"
     }
   ]
