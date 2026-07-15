@@ -93,6 +93,12 @@
   ],
   "articles": [
     {
+      "title": "\nVercel Under the Hood: Why Framework Auto-Detection Breaks Production Apps",
+      "slug": "vercel-under-the-hood",
+      "description": "A technical deep dive into Vercel's request pipeline, vercel.json configurations, and fixing silent build overrides, page refresh 404s, and broken social cards.",
+      "featured": true
+    },
+    {
       "title": "How I Built a Lightning-Fast Headless CMS Using Notion, Node.js, and React",
       "slug": "cms-using-notion-node-and-react",
       "description": "Why pay for a headless CMS when you can write in Notion and compile directly to local static assets?",

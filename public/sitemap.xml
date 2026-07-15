@@ -103,6 +103,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.premdeep.co.in/articles/vercel-under-the-hood</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.premdeep.co.in/articles/cms-using-notion-node-and-react</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
