@@ -12,7 +12,7 @@ const contentIndex = JSON.parse(
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   ssgOptions: {
-    dirStyle: "flat",
+    dirStyle: "nested",
     includedRoutes() {
       const notesPaths = (contentIndex.notes || []).map((n) => `/notes/${n.slug}`);
       const articlesPaths = (contentIndex.articles || []).map((a) => `/articles/${a.slug}`);
