@@ -1,19 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/read-with-me",
-      "destination": "/read-with-me/index.html"
-    },
-    {
-      "source": "/notes/:slug",
-      "destination": "/notes/:slug/index.html"
-    },
-    {
-      "source": "/articles/:slug",
-      "destination": "/articles/:slug/index.html"
-    },
-    {
-      "source": "/((?!.*\\.).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
