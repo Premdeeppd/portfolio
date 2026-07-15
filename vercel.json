@@ -13,7 +13,7 @@
       "destination": "/articles/:slug/index.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!.*\\.).*)",
       "destination": "/index.html"
     }
   ]
