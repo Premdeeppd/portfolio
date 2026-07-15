@@ -1,17 +1,16 @@
 {
-  "cleanUrls": false,
   "rewrites": [
     {
       "source": "/read-with-me",
-      "destination": "/read-with-me.html"
+      "destination": "/read-with-me/index.html"
     },
     {
       "source": "/notes/:slug",
-      "destination": "/notes/:slug.html"
+      "destination": "/notes/:slug/index.html"
     },
     {
       "source": "/articles/:slug",
-      "destination": "/articles/:slug.html"
+      "destination": "/articles/:slug/index.html"
     },
     {
       "source": "/((?!articles|notes|read-with-me|.*\\.).*)",
