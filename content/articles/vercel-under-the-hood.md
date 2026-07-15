@@ -18,25 +18,19 @@ You might encounter two notoriously frustrating issues:
 This guide explores **how Vercel processes deployments and requests under the hood**, demystifies the **`vercel.json`** configuration file, and breaks down the exact mechanics behind these deployment issues.
 
 
----
-
-
 # 1. What is `vercel.json` and How Does Vercel Use It?
 
 
 The `vercel.json` file is a configuration file placed at the root of your project. It acts as an explicit set of instructions to override or extend Vercel’s default deployment, build, and routing behaviors.
 
 
-### When does Vercel read `vercel.json`?
+## When does Vercel read `vercel.json`?
 
 1. **At Build & Package Time**: When Vercel receives a build trigger (via git push or CLI), it inspects `vercel.json` to determine:
     - What command to execute (`buildCommand`)
     - Which directory holds the compiled static files (`outputDirectory`)
     - What framework preset settings to apply (`framework`)
 2. **At Edge Request Time**: When HTTP requests hit Vercel’s Global Edge Network, Vercel evaluates rules defined in `vercel.json` (such as `rewrites`, `redirects`, `headers`, and `cleanUrls`) to determine how to route each request.
-
----
-
 
 # 2. Vercel’s Internal Request Resolution Pipeline
 
@@ -69,13 +63,10 @@ Incoming Request: GET /blog/getting-started
 ```
 
 
-### Key Rules of the Pipeline
+## Key Rules of the Pipeline
 
 - **Filesystem First**: Vercel always checks your output directory for a physical file **before** evaluating `rewrites` or `redirects`. If a file exists at the path (e.g., static assets, pre-rendered HTML files, images), it is served directly.
 - **First Matching Rewrite Wins**: If a path triggers a match in the `rewrites` array, Vercel executes that rewrite. If the destination target doesn’t exist, it does not fallback down the chain by default.
-
----
-
 
 # 3. Demystifying the Issues & Architecture Traps
 
@@ -140,9 +131,6 @@ A clean, universal catch-all rule is all that’s required:
 Since physical assets and pre-rendered pages match in Step 1 (Filesystem Check), only unhandled client-side paths fall through to Step 2 and serve `/index.html`.
 
 
----
-
-
 ## Issue B: Blank Social Cards & Silent Framework Overrides
 
 
@@ -199,9 +187,6 @@ You can also inspect compiled bundle names in `curl` output:
 - Custom pre-rendered or SSG bundle entry: `app-[hash].js` (or custom script outputs)
 
 
----
-
-
 # 4. The Production-Grade `vercel.json` Solution
 
 
@@ -234,9 +219,6 @@ To guarantee that Vercel respects your exact build pipeline, bypasses incorrect 
 | `rewrites`        | `[ { "source": "/(.*)", "destination": "/index.html" } ]` | Catch-all fallback routing for single-page applications. Sends non-filesystem paths to the root `/index.html`.             |
 
 > **Dashboard Note**: If your Vercel Project Settings in the web UI explicitly force a specific framework preset (e.g. “Vite”), navigate to **Project Settings → General → Framework Preset** and switch it to **“Other”** to let `vercel.json` take full priority.
-
----
-
 
 # 5. Summary Checklist for Vercel Deployments
 
