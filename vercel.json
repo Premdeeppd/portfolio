@@ -13,7 +13,7 @@
       "destination": "/articles/:slug/index.html"
     },
     {
-      "source": "/((?!articles|notes|read-with-me|.*\\.).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
