@@ -8,6 +8,15 @@ function NotFound() {
       <Head>
         <title>Page Not Found | Prem</title>
         <meta name="description" content="The page you are looking for does not exist." />
+        <meta name="robots" content="noindex, follow" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Page Not Found | Prem" />
+        <meta property="og:description" content="The page you are looking for does not exist." />
+        <meta property="og:image" content="https://www.premdeep.co.in/og/home.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Page Not Found | Prem" />
+        <meta name="twitter:description" content="The page you are looking for does not exist." />
+        <meta name="twitter:image" content="https://www.premdeep.co.in/og/home.png" />
       </Head>
       <h1 className="text-7xl font-bold text-brand-blue mb-4">404</h1>
       <h2 className="text-2xl font-semibold text-brand-blue/90 mb-6">
