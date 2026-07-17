@@ -24,3 +24,11 @@ dist-ssr
 *.sw?
 .env
 .sync-cache.json
+
+# Next.js
+.next/
+out/
+
+# Backup directory for migration
+_backup_vite/
+

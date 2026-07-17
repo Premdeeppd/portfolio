@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blue: #0262de;
+  --color-brand-peach: #ffe3d0;
+  --color-brand-accent: #0262de;
+  --font-sans: var(--font-outfit), sans-serif;
+  --spacing-30: 7.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-brand-blue);
+  color: #ffffff;
+}
+
+body {
+  background-color: var(--color-brand-blue);
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.App {
+  background-color: var(--color-brand-blue);
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
