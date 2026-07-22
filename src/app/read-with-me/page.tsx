@@ -210,17 +210,15 @@ export default function ReadWithMe() {
                   className="group block bg-brand-blue text-white rounded-none p-4 hover:translate-x-1.5 transition-all duration-300 shadow-md hover:shadow-[0_15px_30px_rgba(2,98,222,0.15)] border border-brand-peach/10"
                 >
                   <div className="space-y-1">
-                    <div className="flex items-center gap-3">
-                      <h3 className="text-xl font-bold text-brand-peach group-hover:text-white transition-colors leading-tight">
-                        {article.title}
-                      </h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-brand-peach group-hover:text-white transition-colors leading-snug">
+                      <span>{article.title}</span>
                       {article.featured && (
-                        <span className="shrink-0 text-[10px] font-extrabold bg-brand-peach text-brand-blue px-2 py-0.5 rounded-none uppercase tracking-wider">
+                        <span className="hidden sm:inline-block ml-2 text-[10px] font-extrabold bg-brand-peach text-brand-blue px-2 py-0.5 rounded-none uppercase tracking-wider align-middle -translate-y-0.5">
                           Featured
                         </span>
                       )}
-                    </div>
-                    <p className="text-white/80 text-sm leading-relaxed line-clamp-1">
+                    </h3>
+                    <p className="hidden sm:block text-white/80 text-sm leading-relaxed line-clamp-1">
                       {article.description}
                     </p>
                   </div>
