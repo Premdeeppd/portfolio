@@ -105,6 +105,12 @@
       "featured": true
     },
     {
+      "title": "Rate Limiting: From Simple In-Memory Code to Distributed Production Systems",
+      "slug": "understanding-rate-limiting",
+      "description": "Local code vs. Production reality. In-memory rate limiting is fast, free, and super easy to build—until multi-instance servers, Vercel serverless cold starts, and round-robin load balancers wipe your state.",
+      "featured": true
+    },
+    {
       "title": "Why Does ENV Exist in a Dockerfile If We Already Have .env?",
       "slug": "why-does-env-exist-in-dockerfile",
       "description": "Learn the difference between Docker's ENV instruction and a .env file, when to use each, and how to manage environment variables and secrets using Docker best practices.",
