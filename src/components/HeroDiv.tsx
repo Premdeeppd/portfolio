@@ -17,10 +17,10 @@ export default function HeroDiv() {
         priority
       />
       <p className="max-w-4xl px-1 py-8 text-center text-base leading-relaxed text-brand-blue sm:px-2 sm:text-lg md:px-4 md:py-10 md:text-xl lg:text-2xl">
-        Graduated from <b>IIT Roorkee</b>, I’m a <b>software developer</b>{" "}
-        focused on building pixel-perfect, scalable, AI-powered web
-        applications. With experience spanning both engineering and{" "}
-        <b>business management</b>, I bridge the gap between technical execution
+        Graduated from <b>IIT Roorkee</b>, I’m a <b>Product-Minded Engineer</b>{" "}
+        focused on building scalable and production-ready, AI
+        applications. With experience spanning both <b>engineering</b> and{" "}
+        <b>product management</b>, bridging the gap between technical execution
         and strategic thinking—turning ideas into impactful products.
       </p>
     </div>
