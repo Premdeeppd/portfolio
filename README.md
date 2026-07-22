@@ -10,41 +10,36 @@ Live Site: [premdeep.co.in](https://www.premdeep.co.in)
 
 Content is authored directly in Notion databases and synchronized into local Markdown & JSON files during build time or via script automation.
 
-```mermaid
-flowchart TD
-    subgraph CMS ["Notion CMS Workspace"]
-        ND1["Notion Articles Database"]
-        ND2["Notion Notes Database"]
-    end
-
-    subgraph BuildEngine ["Sync & Build Engine"]
-        SyncScript["scripts/notion-sync.js"]
-        Cache[".sync-cache.json"]
-        MDContent["content/articles & content/notes"]
-        ImgDownload["public/images/notion/"]
-    end
-
-    subgraph AppRouter ["Next.js 16 App Router"]
-        PageHome["src/app/page.tsx"]
-        PageRead["src/app/read-with-me/page.tsx"]
-        PageArticles["src/app/articles/[slug]/page.tsx"]
-        PageNotes["src/app/notes/[slug]/page.tsx"]
-        MdRenderer["src/components/MarkdownRenderer.tsx"]
-    end
-
-    subgraph Deployment ["Vercel Platform"]
-        VercelEdge["Vercel Edge Network"]
-        VercelAnalytics["@vercel/analytics"]
-    end
-
-    ND1 & ND2 -- Notion API Token --> SyncScript
-    SyncScript -- Incremental Cache --> Cache
-    SyncScript --> MDContent
-    SyncScript --> ImgDownload
-    MDContent --> AppRouter
-    AppRouter --> MdRenderer
-    MdRenderer -- Highlights & Mermaid --> VercelEdge
-    VercelEdge --> VercelAnalytics
+```text
+┌──────────────────────────────────────────────────────────────────────────┐
+│                          Notion CMS Workspace                            │
+│    [Notion Articles Database]        [Notion Notes Database]             │
+└────────────────────────────────────┬─────────────────────────────────────┘
+                                     │ (Notion API Token)
+                                     ▼
+┌──────────────────────────────────────────────────────────────────────────┐
+│                          Sync & Build Engine                             │
+│  • scripts/notion-sync.js (Incremental Cache: .sync-cache.json)          │
+│  ├── content/articles/ & content/notes/ (*.md)                           │
+│  └── public/images/notion/ (Downloaded Assets)                           │
+└────────────────────────────────────┬─────────────────────────────────────┘
+                                     │
+                                     ▼
+┌──────────────────────────────────────────────────────────────────────────┐
+│                        Next.js 16 App Router                             │
+│  ├── src/app/page.tsx                                                    │
+│  ├── src/app/read-with-me/page.tsx                                       │
+│  ├── src/app/articles/[slug]/page.tsx                                    │
+│  ├── src/app/notes/[slug]/page.tsx                                       │
+│  └── src/components/MarkdownRenderer.tsx                                │
+└────────────────────────────────────┬─────────────────────────────────────┘
+                                     │
+                                     ▼
+┌──────────────────────────────────────────────────────────────────────────┐
+│                           Vercel Platform                                │
+│  • Vercel Edge Network                                                   │
+│  • @vercel/analytics                                                     │
+└──────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
