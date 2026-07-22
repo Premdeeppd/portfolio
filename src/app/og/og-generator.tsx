@@ -37,10 +37,10 @@ interface GenerateCardOptions {
 }
 
 export async function generateCardResponse({ title, description, category }: GenerateCardOptions) {
-  const truncatedTitle = title.length > 70 ? title.substring(0, 67) + "..." : title;
+  const truncatedTitle = title.length > 85 ? title.substring(0, 82) + "..." : title;
   const truncatedDesc =
-    description && description.length > 140
-      ? description.substring(0, 137) + "..."
+    description && description.length > 170
+      ? description.substring(0, 167) + "..."
       : description || "";
 
   // Dynamic fallback for fonts if node_modules is not compiled/packaged on Vercel
