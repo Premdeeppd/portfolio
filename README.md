@@ -1,16 +1,93 @@
-# React + Vite
+# Prem Deep — Developer Portfolio & Technical Publishing Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal developer portfolio, technical notes database, and article publishing platform built with **Next.js 16**, **React 19**, **Tailwind CSS v4**, and **Notion CMS integration**.
 
-Currently, two official plugins are available:
+Live Site: [premdeep.co.in](https://www.premdeep.co.in)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Architecture & Data Flow
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Content is authored directly in Notion databases and synchronized into local Markdown & JSON files during build time or via script automation.
 
-## Expanding the ESLint configuration
+```mermaid
+flowchart TD
+    subgraph CMS ["Notion CMS Workspace"]
+        ND1["Notion Articles Database"]
+        ND2["Notion Notes Database"]
+    end
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+    subgraph BuildEngine ["Sync & Build Engine"]
+        SyncScript["scripts/notion-sync.js"]
+        Cache[".sync-cache.json"]
+        MDContent["content/articles & content/notes"]
+        ImgDownload["public/images/notion/"]
+    end
+
+    subgraph AppRouter ["Next.js 16 App Router"]
+        PageHome["src/app/page.tsx"]
+        PageRead["src/app/read-with-me/page.tsx"]
+        PageArticles["src/app/articles/[slug]/page.tsx"]
+        PageNotes["src/app/notes/[slug]/page.tsx"]
+        MdRenderer["src/components/MarkdownRenderer.tsx"]
+    end
+
+    subgraph Deployment ["Vercel Platform"]
+        VercelEdge["Vercel Edge Network"]
+        VercelAnalytics["@vercel/analytics"]
+    end
+
+    ND1 & ND2 -- Notion API Token --> SyncScript
+    SyncScript -- Incremental Cache --> Cache
+    SyncScript --> MDContent
+    SyncScript --> ImgDownload
+    MDContent --> AppRouter
+    AppRouter --> MdRenderer
+    MdRenderer -- Highlights & Mermaid --> VercelEdge
+    VercelEdge --> VercelAnalytics
+```
+
+---
+
+## Key Features
+
+- **Automated Notion CMS Sync**: Custom incremental sync engine (`scripts/notion-sync.js`) converts Notion blocks into clean Markdown and downloads referenced images locally.
+- **Modern Tech Stack**: Powered by Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS v4.
+- **Rich Markdown Engine**: Integrated support for code syntax highlighting (`highlight.js`), Mermaid diagrams, custom table of contents (`DocumentOutline.tsx`), and GFM tables (`remark-gfm`).
+- **Interactive Portfolio UI**: Project showcases (`src/data/projects.ts`), animated skills matrix (`SkillDiv.tsx`), learning logs (`LearnWithMeDiv.tsx`), and social links.
+- **SEO & OpenGraph Optimization**: Structured JSON-LD schema markup (`schema.org`), dynamic sitemap generator (`sitemap.ts`), and dynamic OpenGraph image generator.
+
+---
+
+## Tech Stack
+
+| Category | Technology |
+| :--- | :--- |
+| **Framework & Core** | [Next.js 16](https://nextjs.org/) (App Router), [React 19](https://react.dev/), [TypeScript 5](https://www.typescriptlang.org/) |
+| **Styling & Fonts** | [Tailwind CSS v4](https://tailwindcss.com/), `@fontsource/outfit` |
+| **CMS & Content Engine** | [Notion API SDK](https://github.com/matsuikou/notion-to-md) (`@notionhq/client`), `notion-to-md`, `gray-matter` |
+| **Markdown Rendering** | `react-markdown`, `remark-gfm`, `highlight.js`, `mermaid` |
+| **Analytics & Deployment** | [Vercel](https://vercel.com/), `@vercel/analytics` |
+
+---
+
+## NPM Scripts
+
+| Command | Description |
+| :--- | :--- |
+| `npm run dev` | Starts the Next.js development server. |
+| `npm run build` | Builds the application for production deployment. |
+| `npm run start` | Launches the built production server locally. |
+| `npm run sync` | Runs `scripts/notion-sync.js` to sync content from Notion. |
+| `npm run lint` | Executes ESLint to check for code quality issues. |
+
+---
+
+## Notion CMS Integration Guide
+
+To connect your own Notion databases:
+
+1. Create a Notion Integration at [notion.so/my-integrations](https://www.notion.so/my-integrations) and copy the Secret Token to `NOTION_TOKEN`.
+2. Create Notion databases for **Articles** and **Notes**, and share both databases with your integration connection.
+3. Set `NOTION_ARTICLES_PARENT_ID` and `NOTION_NOTES_PARENT_ID` to your respective Notion database IDs (found in the database page URL).
+4. Run `npm run sync` to populate `content/articles` and `content/notes`.
