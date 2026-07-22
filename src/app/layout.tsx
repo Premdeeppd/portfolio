@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -49,6 +50,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const isProd = process.env.NODE_ENV === "production";
+
   return (
     <html lang="en" className={`${outfit.variable} h-full`}>
       <body className="min-h-full font-sans antialiased">
@@ -59,6 +63,7 @@ export default function RootLayout({
           <Analytics />
         </div>
       </body>
+      {isProd && gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }
