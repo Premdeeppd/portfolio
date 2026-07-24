@@ -13,7 +13,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   if (category === "home.png") {
     return generateCardResponse({
       title: "Prem - Portfolio, articles, and notes",
-      description: "Full-stack software engineer writing articles and notes on software engineering, web architecture, and algorithms.",
+      description: "Product-Minded Engineer focused on building scalable and production-ready, AI applications with experience spanning both engineering and product management.",
       category: "Portfolio",
     });
   }
