@@ -14,7 +14,8 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Prem - Portfolio, articles, and notes",
-  description: "ROXC | Turing | IIT Roorkee",
+  description:
+    "Product-Minded Engineer focused on building scalable and production-ready, AI applications with experience spanning both engineering and product management.",
   authors: [{ name: "Prem Deep" }],
   robots: {
     index: true,
@@ -27,10 +28,11 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://www.premdeep.co.in/",
     title: "Prem - Portfolio, articles, and notes",
-    description: "ROXC | Turing | IIT Roorkee",
+    description:
+      "Product-Minded Engineer focused on building scalable and production-ready, AI applications with experience spanning both engineering and product management.",
     images: [
       {
-        url: "https://www.premdeep.co.in/og/home.png",
+        url: "https://www.premdeep.co.in/og/home.png?v=2",
         width: 1200,
         height: 630,
         alt: "Prem - Portfolio, articles, and notes",
@@ -40,8 +42,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Prem - Portfolio, articles, and notes",
-    description: "ROXC | Turing | IIT Roorkee",
-    images: ["https://www.premdeep.co.in/og/home.png"],
+    description:
+      "Product-Minded Engineer focused on building scalable and production-ready, AI applications with experience spanning both engineering and product management.",
+    images: ["https://www.premdeep.co.in/og/home.png?v=2"],
   },
 };
 
