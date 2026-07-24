@@ -47,10 +47,14 @@ const MermaidBlock = ({ chart }: MermaidBlockProps) => {
           setSvgContent(svg);
           setError(null);
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("Mermaid parsing error:", err);
         if (active) {
-          setError(err.message || "Failed to render Mermaid diagram");
+          setError(
+            err instanceof Error
+              ? err.message
+              : "Failed to render Mermaid diagram"
+          );
         }
         // Cleanup the temporary element created by this specific render attempt
         const badElement = document.getElementById(`d${id}`);
@@ -153,7 +157,7 @@ const renderHeading = (level: number, children: React.ReactNode) => {
     .replace(/[^\w\-]+/g, "")
     .replace(/\-\-+/g, "-");
   
-  const Tag = `h${level}` as any;
+  const Tag = `h${level}` as React.ElementType;
   
   // Custom styles per heading level
   let className = "group relative font-semibold text-brand-blue scroll-mt-28 ";
@@ -189,10 +193,10 @@ const mdComponents: Components = {
     const codeElement = childrenArray.find(
       (child) => {
         if (!React.isValidElement(child)) return false;
-        const props = child.props as any;
+        const props = child.props as { className?: string; children?: React.ReactNode };
         return props.className || props.children;
       }
-    ) as React.ReactElement<any> | undefined;
+    ) as React.ReactElement<{ className?: string; children?: React.ReactNode }> | undefined;
     if (codeElement) {
       const className = codeElement.props.className || "";
       const codeText = codeElement.props.children || "";
@@ -252,6 +256,7 @@ const mdComponents: Components = {
     );
   },
   img: ({ src, alt }) => (
+    /* eslint-disable-next-line @next/next/no-img-element */
     <img
       src={src}
       alt={alt}

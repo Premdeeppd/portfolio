@@ -2,23 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
+
+const getHash = () => (typeof window !== "undefined" ? window.location.hash : "");
+const getServerHash = () => "";
+const subscribeHash = (callback: () => void) => {
+  window.addEventListener("hashchange", callback);
+  return () => window.removeEventListener("hashchange", callback);
+};
 
 export default function NavBar() {
   const pathname = usePathname();
-  const [hash, setHash] = useState("");
-
-  useEffect(() => {
-    // Set initial hash from window
-    setHash(window.location.hash);
-
-    const handleHashChange = () => {
-      setHash(window.location.hash);
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, [pathname]);
+  const hash = useSyncExternalStore(subscribeHash, getHash, getServerHash);
 
   useEffect(() => {
     // Scroll to hash element if exists in URL
@@ -40,7 +35,7 @@ export default function NavBar() {
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
         window.history.pushState(null, "", `#${targetId}`);
-        setHash(`#${targetId}`);
+        window.dispatchEvent(new Event("hashchange"));
       }
     }
   };

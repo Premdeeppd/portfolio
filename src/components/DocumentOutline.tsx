@@ -1,21 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { parseHeadings, HeadingItem } from "../utils/parseHeadings";
+import React, { useEffect, useMemo, useState } from "react";
+import { parseHeadings } from "../utils/parseHeadings";
 
 interface DocumentOutlineProps {
   content: string;
 }
 
 export default function DocumentOutline({ content }: DocumentOutlineProps) {
-  const [headings, setHeadings] = useState<HeadingItem[]>([]);
+  const headings = useMemo(
+    () => (content ? parseHeadings(content) : []),
+    [content]
+  );
   const [activeId, setActiveId] = useState("");
-
-  useEffect(() => {
-    if (content) {
-      setHeadings(parseHeadings(content));
-    }
-  }, [content]);
 
   useEffect(() => {
     if (headings.length === 0) return;

@@ -9,7 +9,7 @@ export default function NotFound() {
         Oops! Page Not Found
       </h2>
       <p className="max-w-md text-slate-700 mb-8">
-        The content or page you are looking for doesn't exist. It might have been moved, deleted, or is temporarily unavailable.
+        The content or page you are looking for doesn&apos;t exist. It might have been moved, deleted, or is temporarily unavailable.
       </p>
       <div className="flex flex-wrap gap-4 justify-center">
         <Link

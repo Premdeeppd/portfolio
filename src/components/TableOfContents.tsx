@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { parseHeadings, HeadingItem } from "../utils/parseHeadings";
+import React, { useEffect, useMemo, useState } from "react";
+import { parseHeadings } from "../utils/parseHeadings";
 
 // Safe padding mapping for Tailwind class compiler
 const paddingMap: Record<number, string> = {
@@ -18,13 +18,8 @@ interface TableOfContentsProps {
 }
 
 export default function TableOfContents({ content }: TableOfContentsProps) {
-  const [headings, setHeadings] = useState<HeadingItem[]>([]);
+  const headings = useMemo(() => parseHeadings(content), [content]);
   const [activeId, setActiveId] = useState("");
-
-  useEffect(() => {
-    const parsedHeadings = parseHeadings(content);
-    setHeadings(parsedHeadings);
-  }, [content]);
 
   useEffect(() => {
     if (headings.length === 0) return;
