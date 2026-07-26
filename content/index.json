@@ -85,6 +85,12 @@
       "featured": false
     },
     {
+      "title": "CI/CD",
+      "slug": "cicd",
+      "description": "Personal knowledge reference note on CI/CD.",
+      "featured": false
+    },
+    {
       "title": "Docker",
       "slug": "docker",
       "description": "Everything a developer needs to understand Docker—from local development environments to production deployments.",
