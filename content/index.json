@@ -86,8 +86,8 @@
     },
     {
       "title": "CI/CD",
-      "slug": "cicd",
-      "description": "Personal knowledge reference note on CI/CD.",
+      "slug": "ci-cd-pipeline",
+      "description": "A deep dive into Continuous Integration (CI) and Continuous Deployment/Delivery (CD), covering automated builds, testing, deployment pipelines, GitHub Actions, artifacts, caching, runners, and production-ready CI/CD workflows.\n",
       "featured": false
     },
     {
@@ -118,9 +118,9 @@
     },
     {
       "title": "The Hidden Layer of WebSockets: Understanding Frames",
-      "slug": "the-hidden-layer-of-websockets-understanding-frames",
-      "description": "Most developers know that WebSockets provide a persistent TCP connection where both the client and server can send messages at any time.",
-      "featured": false
+      "slug": "websocket-frames",
+      "description": "A deep dive into WebSocket frames, message boundaries, fragmentation, the FIN bit, opcodes, control frames, client masking, and the relationship between WebSocket frames and TCP segments.",
+      "featured": true
     },
     {
       "title": "Why Does ENV Exist in a Dockerfile If We Already Have .env?",

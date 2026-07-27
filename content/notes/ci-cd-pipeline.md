@@ -1,7 +1,8 @@
 ---
 title: "CI/CD"
-slug: "cicd"
-description: "Personal knowledge reference note on CI/CD."
+slug: "ci-cd-pipeline"
+description: "A deep dive into Continuous Integration (CI) and Continuous Deployment/Delivery (CD), covering automated builds, testing, deployment pipelines, GitHub Actions, artifacts, caching, runners, and production-ready CI/CD workflows.
+"
 featured: false
 ---
 

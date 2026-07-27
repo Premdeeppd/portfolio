@@ -1,8 +1,8 @@
 ---
 title: "The Hidden Layer of WebSockets: Understanding Frames"
-slug: "the-hidden-layer-of-websockets-understanding-frames"
-description: "Most developers know that WebSockets provide a persistent TCP connection where both the client and server can send messages at any time."
-featured: false
+slug: "websocket-frames"
+description: "A deep dive into WebSocket frames, message boundaries, fragmentation, the FIN bit, opcodes, control frames, client masking, and the relationship between WebSocket frames and TCP segments."
+featured: true
 ---
 
 
