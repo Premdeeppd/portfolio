@@ -17,7 +17,7 @@ export default function SocialDiv() {
           aria-label="LinkedIn"
         >
           <div
-            className="h-14 w-14 bg-brand-blue transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110"
+            className="h-14 w-14 rounded-full bg-brand-blue transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110"
             style={{
               WebkitMaskImage: `url(${linkedinImg.src})`,
               maskImage: `url(${linkedinImg.src})`,
@@ -37,7 +37,7 @@ export default function SocialDiv() {
           aria-label="Twitter / X"
         >
           <div
-            className="h-14 w-14 bg-brand-blue transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110"
+            className="h-14 w-14 rounded-full bg-brand-blue transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110"
             style={{
               WebkitMaskImage: `url(${xImg.src})`,
               maskImage: `url(${xImg.src})`,
@@ -57,7 +57,7 @@ export default function SocialDiv() {
           aria-label="GitHub"
         >
           <div
-            className="h-14 w-14 bg-brand-blue transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110"
+            className="h-14 w-14 rounded-full bg-brand-blue transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110"
             style={{
               WebkitMaskImage: `url(${githubImg.src})`,
               maskImage: `url(${githubImg.src})`,
@@ -72,7 +72,7 @@ export default function SocialDiv() {
         </a>
         <a href="mailto:premdeepnawada@gmail.com" aria-label="Email">
           <div
-            className="h-14 w-14 bg-brand-blue transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110"
+            className="h-14 w-14 rounded-full bg-brand-blue transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110"
             style={{
               WebkitMaskImage: `url(${emailImg.src})`,
               maskImage: `url(${emailImg.src})`,

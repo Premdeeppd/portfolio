@@ -61,7 +61,7 @@ const skills: Skill[] = [
 export default function SkillDiv() {
   const renderLogo = (skill: Skill) => {
     return (
-      <div className="flex h-14 w-14 items-center justify-center rounded-none bg-brand-peach p-3 text-brand-blue transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110">
+      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-peach p-3 text-brand-blue transition-transform sm:h-16 sm:w-16 md:h-20 md:w-20 md:hover:scale-110">
         <div
           aria-hidden="true"
           className="[&_svg]:h-full [&_svg]:w-full [&_svg]:fill-current [&_svg]:transition-transform"
