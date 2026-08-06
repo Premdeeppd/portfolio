@@ -211,15 +211,15 @@ export default function ReadWithMe() {
                 >
                   <div className="space-y-1">
                     <h3 className="text-base sm:text-xl font-bold text-brand-peach group-hover:text-white transition-colors leading-snug">
-                      <span>{article.title}</span>
+                      <span>{article.title.trim()}</span>
                       {article.featured && (
                         <span className="hidden sm:inline-block ml-2 text-[10px] font-extrabold bg-brand-peach text-brand-blue px-2 py-0.5 rounded-none uppercase tracking-wider align-middle -translate-y-0.5">
                           Featured
                         </span>
                       )}
                     </h3>
-                    <p className="hidden sm:block text-white/80 text-sm leading-relaxed line-clamp-1">
-                      {article.description}
+                    <p className="text-white/80 text-sm leading-relaxed truncate">
+                      {article.description.trim()}
                     </p>
                   </div>
                 </Link>
