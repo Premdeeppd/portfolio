@@ -105,6 +105,12 @@
       "featured": true
     },
     {
+      "title": "Continuous Evaluation for LLMs: The Missing CI/CD Layer",
+      "slug": "continuous-evaluation-for-llm",
+      "description": "A guide on building a production-grade Continuous Evaluation (CE) system for Large Language Models.",
+      "featured": true
+    },
+    {
       "title": "How I Built a Lightning-Fast Headless CMS Using Notion, Node.js, and React",
       "slug": "cms-using-notion-node-and-react",
       "description": "Why pay for a headless CMS when you can write in Notion and compile directly to local static assets?",
