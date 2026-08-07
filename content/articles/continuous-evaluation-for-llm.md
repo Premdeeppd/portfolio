@@ -69,17 +69,24 @@ With LLMs, system behavior becomes **probabilistic**:
 
 ```mermaid
 flowchart TD
-    A[Developer git push / open PR] --> B[Standard CI Pipeline]
-    B --> B1[LLM Stub / Mock Mode]
-    B --> B2[Fast Execution < 2 mins]
-    B --> B3[$0 API Cost]
-    B --> B4[Validates Schemas, Routes & DB]
+    subgraph CI ["Fast CI Pipeline (PR Triggered)"]
+        A[Developer git push / open PR] --> B[Standard CI Pipeline]
+        B --> B1[LLM Stub / Mock Mode]
+        B --> B2["Fast Execution (< 2 mins)"]
+        B --> B3[$0 API Cost]
+        B --> B4[Validates Schemas, Routes & DB]
+    end
 
-    C[Nightly Off-Peak Cron Schedule] --> D[Nightly Evaluation Pipeline]
-    D --> D1[Live Model Calls: Gemini / GPT-4 / Claude]
-    D --> D2[Golden Dataset Benchmarks]
-    D --> D3[Strict Budget & Token Ceilings]
-    D --> D4[Generates Performance & Model Drift Reports]
+    subgraph Eval ["Nightly Evaluation Pipeline (Scheduled)"]
+        C[Nightly Off-Peak Cron Schedule] --> D[Nightly Evaluation Pipeline]
+        D --> D1[Live Model Calls: Gemini / GPT-4 / Claude]
+        D --> D2[Golden Dataset Benchmarks]
+        D --> D3[Strict Budget & Token Ceilings]
+        D --> D4[Generates Performance & Model Drift Reports]
+    end
+
+    %% Invisible link forcing vertical stacking
+    CI ~~~ Eval
 ```
 
 
@@ -216,15 +223,18 @@ sequenceDiagram
 
 ## 6. Gotchas & Best Practices
 
-> [!IMPORTANT]  
-> **Enforce Least-Privilege IAM Roles**  
+> 
+> - **Enforce Least-Privilege IAM Roles**
 > Never grant `Owner` or `Editor` roles to CI service accounts. Assign **only** invocation permissions (e.g., `roles/aiplatform.user` on GCP) and restrict Workload Identity bindings strictly to your specific repository path (`attribute.repository == 'org/repo'`).
-> [!WARNING]  
-> **Beware the OIDC Trailing Slash Trap**  
+>
+> 
+> - **Beware the OIDC Trailing Slash Trap**
 > Cloud OIDC providers enforce exact string matching on issuer URLs. Setting an issuer URL with a trailing slash (`https://token.actions.githubusercontent.com/`) will cause authentication token exchange failures. Always omit trailing slashes.
-> [!TIP]  
-> **Mitigating Non-Determinism in Evaluations**  
+>
+> 
+> - **Mitigating Non-Determinism in Evaluations**
 > Set `temperature: 0` for evaluation calls requiring reproducible scoring, and leverage structured outputs (JSON Schema / Zod validation) for automated judges.
+>
 
 ---
 
