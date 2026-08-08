@@ -9,7 +9,7 @@ featured: true
 _A guide on building a production-grade Continuous Evaluation (CE) system for Large Language Models._
 
 
-## 1. The Silent Crisis in Production AI
+# 1. The Silent Crisis in Production AI
 
 
 Imagine shipping a traditional backend service where 15% of your API responses silently return incorrect data, but **not a single exception is logged, no HTTP 500 error is triggered, and every unit test passes with flying colors.**
@@ -38,7 +38,7 @@ style A4 fill:#ffe6e6,stroke:#cc0000,color:#990000
 ```
 
 
-### The 4 Silent Killers of AI Applications
+## The 4 Silent Killers of AI Applications
 
 1. **The Stealth Quality Drop:** You tweak a system prompt or adjust Retrieval-Augmented Generation (RAG) parameters. Your API handler returns `200 OK`, but output factual accuracy drops from 92% to 74%. Without continuous benchmarks, you won’t know until customer churn spikes.
 2. **Foundation Model Drift:** Cloud LLM providers continuously update backend model weights. A prompt that generated clean JSON last month might start producing markdown-wrapped code blocks today after a quiet model update.
@@ -48,7 +48,7 @@ style A4 fill:#ffe6e6,stroke:#cc0000,color:#990000
 Continuous Evaluation (CE) via a scheduled **Nightly Evaluation Pipeline (****`eval-nightly`****)** is not a luxury—it is the engineering discipline that separates toy LLM wrappers from resilient, production-ready AI products.
 
 
-## 2. The Paradigm Shift: Decoupling CI from Continuous Evaluation (CE)
+# 2. The Paradigm Shift: Decoupling CI from Continuous Evaluation (CE)
 
 
 Building production-grade AI systems requires rethinking Software Quality Assurance.
@@ -64,7 +64,7 @@ With LLMs, system behavior becomes **probabilistic**:
 1. **Exorbitant API Costs:** Running full evaluation benchmarks across dozens of PR commits a day burns thousands of dollars needlessly.
 2. **Developer Velocity Friction:** Evaluation runs over representative datasets take minutes or hours. A CI pipeline that blocks merges for 30 minutes gets bypassed or disabled by developers.
 
-### The Solution: The Two-Tiered Evaluation Model
+## The Solution: The Two-Tiered Evaluation Model
 
 
 ```mermaid
@@ -93,7 +93,7 @@ flowchart TD
 By establishing a **Nightly Evaluation Pipeline**, you decouple deterministic code verification from probabilistic model evaluation. Developers iterate rapidly during the day with instant mock CI feedback, while the nightly pipeline monitors model quality, prompt efficacy, and cost regressions off-peak.
 
 
-## 3. Build vs. Buy: The LLM Evaluation Tooling Landscape
+# 3. Build vs. Buy: The LLM Evaluation Tooling Landscape
 
 
 When architecting a continuous evaluation pipeline, engineering teams face a key choice: **build a lightweight custom evaluation runner or adopt external frameworks.**
@@ -134,7 +134,7 @@ Adopting enterprise observability platforms:
 
 - **LangSmith / Braintrust / Arize Phoenix:** Provide web dashboards, prompt versioning, dataset curation UI, and live production tracing.
 
-## 4. Architectural Blueprint: The 5 Pillars of a Production `eval-nightly`
+# 4. Architectural Blueprint: The 5 Pillars of a Production `eval-nightly`
 
 
 A robust nightly evaluation system relies on five architectural pillars:
@@ -192,7 +192,7 @@ Unbounded loops against live LLM APIs can accidentally burn thousands of dollars
 ---
 
 
-## 5. How a Nightly Pipeline Operates Under the Hood
+# 5. How a Nightly Pipeline Operates Under the Hood
 
 
 Here is the sequence of events when an automated nightly evaluation pipeline fires:
@@ -221,7 +221,7 @@ sequenceDiagram
 ---
 
 
-## 6. Gotchas & Best Practices
+# 6. Gotchas & Best Practices
 
 > 
 > - **Enforce Least-Privilege IAM Roles**
@@ -239,7 +239,7 @@ sequenceDiagram
 ---
 
 
-## 7. Reference Implementation
+# 7. Reference Implementation
 
 
 Below is a production-ready, standalone GitHub Actions workflow file that implements this architecture:
