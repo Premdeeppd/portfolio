@@ -1,4 +1,6 @@
 import HeroDiv from "@/components/HeroDiv";
+import ExperienceDiv from "@/components/ExperienceDiv";
+import ProjectDiv from "@/components/ProjectDiv";
 import LearnWithMeDiv from "@/components/LearnWithMeDiv";
 import SocialDiv from "@/components/SocialDiv";
 import SkillDiv from "@/components/SkillDiv";
@@ -75,6 +77,8 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <HeroDiv />
+      <ExperienceDiv />
+      <ProjectDiv />
       <LearnWithMeDiv />
       <SocialDiv />
       <SkillDiv />
