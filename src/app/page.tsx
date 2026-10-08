@@ -1,6 +1,7 @@
 import HeroDiv from "@/components/HeroDiv";
 import ExperienceDiv from "@/components/ExperienceDiv";
 import ProjectDiv from "@/components/ProjectDiv";
+import ContributionsDiv from "@/components/ContributionsDiv";
 import LearnWithMeDiv from "@/components/LearnWithMeDiv";
 import SocialDiv from "@/components/SocialDiv";
 import SkillDiv from "@/components/SkillDiv";
@@ -79,6 +80,7 @@ export default function Home() {
       <HeroDiv />
       <ExperienceDiv />
       <ProjectDiv />
+      <ContributionsDiv />
       <LearnWithMeDiv />
       <SocialDiv />
       <SkillDiv />
